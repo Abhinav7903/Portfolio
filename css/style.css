@@ -376,7 +376,7 @@ button {
 /* ABOUT */
 .about_img {
   width: 200px;
-  border-radius: 0.5rem;
+  border-radius: 15rem;
   justify-self: center;
   align-self: center;
 }
@@ -464,6 +464,35 @@ button {
   border-radius: 0.25rem;
   background-color: var(--first-color);
 }
+
+.skills_bar_java, .skills_bar_css{
+  width: 80%;
+  height: 5px;
+  border-radius: 0.25rem;
+  background-color: var(--first-color);
+}
+
+.skills_bar_py, .skills_bar_andr, .skills_bar_git{
+  width: 65%;
+  height: 5px;
+  border-radius: 0.25rem;
+  background-color: var(--first-color);
+}
+
+.skills_bar_html{
+  width: 90%;
+  height: 5px;
+  border-radius: 0.25rem;
+  background-color: var(--first-color);
+}
+
+.skills_bar_js, .skills_bar_github{
+  width: 70%;
+  height: 5px;
+  border-radius: 0.25rem;
+  background-color: var(--first-color);
+}
+
 
 .skills_list {
   height: 0;
