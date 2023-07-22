@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // PORTFOLIO SWIPER
-  let swiper = new Swiper(".mySwiper", {
+  let swiper = new Swiper(".portfolio_container", {
     cssMode: true,
     loop: false,
     navigation: {
