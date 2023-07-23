@@ -52,9 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let swiper = new Swiper(".portfolio_container", {
     cssMode: true,
     loop: false,
+    
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
+    speed: 400,
     },
     pagination: {
       el: ".swiper-pagination",

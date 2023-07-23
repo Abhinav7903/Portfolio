@@ -352,7 +352,7 @@ button {
   display: inline-block;
   background-color: var(--first-color);
   color: #fff;
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 0.5rem;
   font-weight: var(--font-medium);
 }
@@ -472,12 +472,13 @@ button {
   background-color: var(--first-color);
 }
 
-.skills_bar_py, .skills_bar_andr, .skills_bar_git{
-  width: 65%;
+.skills_bar_py, .skills_bar_andr, .skills_bar_git, .skills_bar_react{
+  width: 70%;
   height: 5px;
   border-radius: 0.25rem;
   background-color: var(--first-color);
 }
+
 
 .skills_bar_html{
   width: 90%;
@@ -584,7 +585,7 @@ button {
 }
 
 .portfolio_content {
-  padding: 0 2.5rem;
+  padding: 0 1.5rem;
 }
 
 .portfolio_img {
@@ -608,7 +609,7 @@ button {
 
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  content: "";
+  content: '';
 }
 
 .swiper-portfolio-icon {
