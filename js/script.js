@@ -77,39 +77,57 @@ document.addEventListener("DOMContentLoaded", () => {
     loop: true,
   });
 
-  // DARK/LIGHT THEME
-  const themeButton = document.getElementById("theme-button");
-  const darkTheme = "dark-theme";
-  const iconTheme = "uil-sun";
-
-  // Previously selected topic (if user selected)
-  const selectedTheme = localStorage.getItem("selected-theme");
-  const selectedIcon = localStorage.getItem("selected-icon");
-
-  // obtain the current theme
-  const getCurrentTheme = () =>
-    document.body.classList.contains(darkTheme) ? "dark" : "light";
-  const getCurrentIcon = () =>
-    themeButton.classList.contains(iconTheme) ? "uil-moon" : "uil-sun";
-
-  if (selectedTheme) {
-    document.body.classList[selectedTheme === "dark" ? "add" : "remove"](
-      darkTheme
-    );
-    themeButton.classList[selectedIcon === "uil-moon" ? "add" : "remove"](
-      iconTheme
-    );
+// Function to show or hide particles based on the theme
+const showHideParticles = (theme) => {
+  const particlesContainer = document.getElementById("particles-js");
+  if (theme === "dark") {
+    particlesContainer.style.display = "block"; // Show particles when in dark mode
+  } else {
+    particlesContainer.style.display = "none"; // Hide particles when in light mode
   }
+};
 
-  // Activate/Deactivate the theme manually with the button
-  themeButton.addEventListener("click", () => {
-    // Add or remove the dark icon/theme
-    document.body.classList.toggle(darkTheme);
-    themeButton.classList.toggle(iconTheme);
-    // We save the theme and the current icon that the user chose
-    localStorage.setItem("selected-theme", getCurrentTheme());
-    localStorage.setItem("selected-icon", getCurrentIcon());
-  });
+// DARK/LIGHT THEME
+const themeButton = document.getElementById("theme-button");
+const darkTheme = "dark-theme";
+const iconTheme = "uil-sun";
+
+// Previously selected topic (if user selected)
+const selectedTheme = localStorage.getItem("selected-theme");
+const selectedIcon = localStorage.getItem("selected-icon");
+
+// obtain the current theme
+const getCurrentTheme = () =>
+  document.body.classList.contains(darkTheme) ? "dark" : "light";
+const getCurrentIcon = () =>
+  themeButton.classList.contains(iconTheme) ? "uil-moon" : "uil-sun";
+
+// Set initial particles visibility based on the theme
+showHideParticles(getCurrentTheme());
+
+if (selectedTheme) {
+  document.body.classList[selectedTheme === "dark" ? "add" : "remove"](
+    darkTheme
+  );
+  themeButton.classList[selectedIcon === "uil-moon" ? "add" : "remove"](
+    iconTheme
+  );
+}
+
+// Activate/Deactivate the theme manually with the button
+themeButton.addEventListener("click", () => {
+  // Add or remove the dark icon/theme
+  document.body.classList.toggle(darkTheme);
+  themeButton.classList.toggle(iconTheme);
+  
+  // Show/hide particles based on the current theme
+  showHideParticles(getCurrentTheme());
+
+  // We save the theme and the current icon that the user chose
+  localStorage.setItem("selected-theme", getCurrentTheme());
+  localStorage.setItem("selected-icon", getCurrentIcon());
+});
+
 
   // SCROLL SECTIONS ACTIVE LINK
   const sections = document.querySelectorAll("section[id]");
