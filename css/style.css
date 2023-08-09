@@ -208,7 +208,13 @@ button {
 .nav_toggle:hover {
   color: var(--first-color);
 }
+@media screen and (max-width: 568px) {
+  #qualification{
+    margin-left: 20px;
+  }
 
+
+}
 @media screen and (max-width: 767px) {
   .nav_menu {
     position: fixed;
