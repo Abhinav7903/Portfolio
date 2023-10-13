@@ -1,6 +1,6 @@
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+import { getAnalytics, logEvent, setUserId } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+
 // TODO: Add SDKs for Firebase products that you want to use
 
 const firebaseConfig = {
@@ -17,7 +17,25 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-analytics.logEvent('page_view', {
-    page_name: 'home',
+window.addEventListener('load', () => {
+  // getrandom user and provide analytics
+  setUserId(analytics, generateRandomUserId());
+  logEvent(analytics, 'load', {
+    randomUserId: generateRandomUserId()
   });
-  
+});
+logEvent(analytics, generateRandomUserId());
+console.log(logEvent)
+console.log(generateRandomUserId());
+
+// Function to generate a random user ID
+function generateRandomUserId() {
+  // You can implement your own logic to generate a random user ID here
+  // For simplicity, let's generate a random 10-character string
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let userId = '';
+  for (let i = 0; i < 10; i++) {
+    userId += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return userId;
+}
