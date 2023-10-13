@@ -25,8 +25,7 @@ window.addEventListener('load', () => {
   });
 });
 logEvent(analytics, generateRandomUserId());
-console.log(logEvent)
-console.log(generateRandomUserId());
+
 
 // Function to generate a random user ID
 function generateRandomUserId() {
