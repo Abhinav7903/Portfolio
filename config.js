@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
 import { getAnalytics, logEvent, setUserId } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+import { getFirestore, collection, getDocs,addDoc } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
 // TODO: Add SDKs for Firebase products that you want to use
 
@@ -17,20 +18,36 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-window.addEventListener('load', () => {
-  // getrandom user and provide analytics
-  setUserId(analytics, generateRandomUserId());
-  logEvent(analytics, 'load', {
-    randomUserId: generateRandomUserId()
-  });
-});
-logEvent(analytics, generateRandomUserId());
+window.addEventListener('load', async () => {
+  // Check if the user ID is already stored in localStorage
+  let userId = localStorage.getItem('userId');
 
+  if (!userId) {
+    // If not, generate a new user ID
+    userId = generateRandomUserId();
+    // console.log('Generated new user ID: ' + userId);
+
+    // Store the user ID in localStorage to persist it across page reloads
+    localStorage.setItem('userId', userId);
+
+    // Log the analytics event with the generated user ID
+    logEvent(analytics, 'load', {
+      randomUserId: userId
+    });
+
+    // Store the generated user ID in the database with the current timestamp
+    const db = getFirestore(app);
+
+    const timestamp = new Date().toLocaleString();
+    const docRef = await addDoc(collection(db, "users"), {
+      userId: userId,
+      timestamp: timestamp
+    });
+  }
+});
 
 // Function to generate a random user ID
 function generateRandomUserId() {
-  // You can implement your own logic to generate a random user ID here
-  // For simplicity, let's generate a random 10-character string
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let userId = '';
   for (let i = 0; i < 10; i++) {
