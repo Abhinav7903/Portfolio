@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Typing Animation using Typed JS
   var typed = new Typed(".type", {
-    strings: ["a Web", "an Android"],
+    strings: ["a FullStack Web"],
     smartBackspace: true,
     startDelay: 1000,
     typeSpeed: 130,
