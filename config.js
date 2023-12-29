@@ -19,30 +19,44 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 window.addEventListener('load', async () => {
-  // Check if the user ID is already stored in localStorage
-  let userId = localStorage.getItem('userId');
+  try {
+    // check if user ID is already stored in local storage delete it
+    let userId = localStorage.getItem('userId');
+    if (userId) {
+      localStorage.removeItem('userId');
+      // console.log('Removed user ID from localStorage: ' + userId);
+    }
+    
 
-  if (!userId) {
-    // If not, generate a new user ID
-    userId = generateRandomUserId();
-    // console.log('Generated new user ID: ' + userId);
+    if (!userId) {
+      // If not, generate a new user ID
+      userId = generateRandomUserId();
+      // console.log('Generated new user ID: ' + userId);
+      // on window close, the stored user ID will be removed
+      localStorage.setItem('userId', userId);
+      // console.log('Stored user ID in localStorage: ' + userId);
+      window.addEventListener('beforeunload', () => {
+        localStorage.removeItem('userId');
+        // console.log('Removed user ID from localStorage: ' + userId);
+      });
+      // Log the analytics event with the generated user ID
+      logEvent(analytics, 'load', {
+        randomUserId: userId
+      });
 
-    // Store the user ID in localStorage to persist it across page reloads
-    localStorage.setItem('userId', userId);
+      // Store the generated user ID in the database with the current timestamp
+      const db = getFirestore(app);
 
-    // Log the analytics event with the generated user ID
-    logEvent(analytics, 'load', {
-      randomUserId: userId
-    });
+      const timestamp = new Date().toISOString(); // Use ISO string for consistency
+      const docRef = await addDoc(collection(db, "users"), {
+        userId: userId,
+        timestamp: timestamp
+      });
 
-    // Store the generated user ID in the database with the current timestamp
-    const db = getFirestore(app);
-
-    const timestamp = new Date().toLocaleString();
-    const docRef = await addDoc(collection(db, "users"), {
-      userId: userId,
-      timestamp: timestamp
-    });
+      // console.log('User ID and timestamp added to Firestore:', docRef.id);
+    }
+  } catch (error) {
+    // console.error('Error during user ID generation and Firestore operation:', error);
   }
 });
 
