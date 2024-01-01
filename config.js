@@ -28,16 +28,13 @@ window.addEventListener('load', async () => {
     }
     
 
-    if (!userId) {
-      // If not, generate a new user ID
+    if (!userId) { 
       userId = generateRandomUserId();
-      // console.log('Generated new user ID: ' + userId);
-      // on window close, the stored user ID will be removed
+  
       localStorage.setItem('userId', userId);
-      // console.log('Stored user ID in localStorage: ' + userId);
+ 
       window.addEventListener('beforeunload', () => {
         localStorage.removeItem('userId');
-        // console.log('Removed user ID from localStorage: ' + userId);
       });
       // Log the analytics event with the generated user ID
       logEvent(analytics, 'load', {
@@ -46,8 +43,9 @@ window.addEventListener('load', async () => {
 
       // Store the generated user ID in the database with the current timestamp
       const db = getFirestore(app);
-
-      const timestamp = new Date().toISOString(); // Use ISO string for consistency
+      // get IST time
+      const timestamp= new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+      console.log(timestamp);
       const docRef = await addDoc(collection(db, "users"), {
         userId: userId,
         timestamp: timestamp
