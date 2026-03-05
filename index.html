@@ -1,748 +1,703 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="8UeFaUl7mRzi-aUD0n_1EQ5wi9N7yJLko4Zk4bfiosU" />
-  <title>Abhinav Ashish</title>
+  <meta name="description" content="Abhinav Ashish — Software Engineer specializing in Go, backend systems, and distributed architectures. Building high-performance applications.">
+  <meta name="keywords" content="Abhinav Ashish, Software Engineer, Go Developer, Backend Developer, Portfolio, Kolkata">
+  <meta name="author" content="Abhinav Ashish">
+  <meta name="google-site-verification" content="8UeFaUl7mRzi-aUD0n_1EQ5wi9N7yJLko4Zk4bfiosU">
+  <title>Abhinav Ashish — Software Engineer</title>
 
-  <!-- Icon  -->
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="icon" type="image/x-icon" href="asset/logo.svg">
 
-  <script src="config.js" type="module"></script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- sCRTIPT FOR ICON -->
-  <script src="https://kit.fontawesome.com/f3a6af3bde.js" crossorigin="anonymous"></script>
-  <!-- swiperjs -->
-  <!-- Link Swiper's CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-  <!-- <link rel="stylesheet" href="css/swiper-bundle.min.css" /> -->
-
-  <script src="https://kit.fontawesome.com/f3a6af3bde.js" crossorigin="anonymous"></script>
-  <!-- css -->
   <link rel="stylesheet" href="css/style.css">
-</head>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 
+</head>
 <body>
 
-  
+  <!-- Ambient Background -->
+  <div class="ambient-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
 
-    <!-- Particle Js -->
-    <div id="particles-js"></div>
-    <!-- Header -->
-    <header class="header" id="header">
-      <nav class="nav container">
-        <a href="#" class="nav_logo"><b>Abhinav</b>
-          <hr>
+  <!-- Header — floating island -->
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-text">Abhinav<span class="logo-dot">.</span></span>
+      </a>
+
+      <!-- Desktop nav -->
+      <ul class="nav-list" id="nav-list">
+        <li><a href="#hero"       class="nav-link active-link" data-section="hero">Home</a></li>
+        <li><a href="#about"      class="nav-link" data-section="about">About</a></li>
+        <li><a href="#skills"     class="nav-link" data-section="skills">Skills</a></li>
+        <li><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
+        <li><a href="#projects"   class="nav-link" data-section="projects">Projects</a></li>
+        <li><a href="#contact"    class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile nav -->
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <div class="nav-menu" id="nav-menu">
+    <button class="close-btn" id="close-btn"><i class="fas fa-times"></i></button>
+    <ul class="nav-list">
+      <li><a href="#hero"       class="nav-link nav-link-m" data-section="hero">Home</a></li>
+      <li><a href="#about"      class="nav-link nav-link-m" data-section="about">About</a></li>
+      <li><a href="#skills"     class="nav-link nav-link-m" data-section="skills">Skills</a></li>
+      <li><a href="#experience" class="nav-link nav-link-m" data-section="experience">Experience</a></li>
+      <li><a href="#projects"   class="nav-link nav-link-m" data-section="projects">Projects</a></li>
+      <li><a href="#contact"    class="nav-link nav-link-m" data-section="contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <main>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero section" id="hero">
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- LEFT -->
+      <div class="hero-left">
+
+        <div class="hero-eyebrow">
+          <span class="bolt-wrap">
+            <span class="bolt">⚡</span>
+          </span>
+          Building scalable systems
+        </div>
+
+        <h1 class="hero-name">
+          Hi, I'm<br>
+          <span class="grad">Abhinav Ashish</span>
+        </h1>
+
+        <p class="hero-role">
+          I build <span class="typed-text" id="typed"></span><span class="cursor-blink">|</span>
+        </p>
+
+        <p class="hero-bio">
+          Software Engineer specializing in <strong>Go</strong>, backend systems,
+          and distributed architectures. Passionate about building scalable
+          systems and exploring network protocols.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">
+            View Projects <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+        </div>
+
+        <div class="hero-links">
+          <a href="https://github.com/Abhinav7903" target="_blank" class="icon-btn">
+            <i class="fab fa-github"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/in/abhinav-ashish-8328bb1b5" target="_blank" class="icon-btn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+
+          <a href="mailto:abhinavashish@gmail.com" class="icon-btn">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hs-num" id="stat-repos">20+</span>
+            <span class="hs-label">Projects</span>
+          </div>
+
+          <div class="hero-stat">
+            <span class="hs-num">1+</span>
+            <span class="hs-label">Years Experience</span>
+          </div>
+
+          <div class="hero-stat">
+            <span class="hs-num">10+</span>
+            <span class="hs-label">Technologies</span>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- RIGHT SIDE -->
+    <!-- RIGHT SIDE -->
+<div class="hero-visual-wrap">
+
+  <div class="hero-terminal">
+
+    <!-- terminal header -->
+    <div class="terminal-top">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="terminal-title">abhinav@portfolio ~</span>
+    </div>
+
+    <!-- avatar -->
+    <div class="terminal-avatar">
+      <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Abhinav" alt="Developer Avatar">
+    </div>
+
+    <!-- terminal body -->
+   <div class="terminal-body" id="terminal-body">
+
+  <div id="terminal-history"></div>
+
+  <div class="terminal-line">
+    <span class="prompt">abhinav@portfolio:~$</span>
+    <span class="terminal-text" id="terminal-text"></span>
+    <span class="terminal-cursor"></span>
+  </div>
+
+</div>
+  </div>
+
+</div>
+
+    </div>
+  </div>
+</section>
+
+    <!-- ═══════════════ ABOUT ═══════════════ -->
+<section class="section" id="about">
+  <div class="container">
+
+    <div class="sh" data-reveal>
+      <span class="sh-tag">About Me</span>
+      <h2 class="sh-title">Who I Am</h2>
+      <p class="sh-sub">A glimpse into my journey and what drives me</p>
+    </div>
+
+    <div class="about-grid">
+
+      <div class="about-img-wrap" data-reveal>
+        <div class="sphere-wrap">
+          <div id="tech-sphere" class="tech-sphere"></div>
+          <div class="sphere-glow"></div>
+        </div>
+      </div>
+
+
+      <!-- TEXT SIDE -->
+      <div data-reveal>
+
+        <p class="about-p">
+          I'm a <strong>Software Engineer</strong> with a B.Tech in Computer Science & Engineering from
+          <a href="https://www.fiemkol.org" target="_blank">Future Institute of Engineering and Management</a>
+          (2020–2024), Kolkata.
+        </p>
+
+        <p class="about-p">
+          Currently working as a Software Engineer where I focus on backend systems and scalable APIs.
+        </p>
+
+        <p class="about-p">
+          My primary stack is <strong>Go</strong>. I've built encrypted terminal chat applications,
+          blockchain network decoders, CRUD APIs, and a real-time salon management SaaS.
+        </p>
+
+        <p class="about-p">
+          I'm particularly interested in systems programming, distributed systems, and network protocols.
+          In my free time I enjoy building small real-world projects to explore different system designs.
+        </p>
+
+        <div class="about-tags">
+          <span class="a-tag">Go</span>
+          <span class="a-tag">PostgreSQL</span>
+          <span class="a-tag">Redis</span>
+          <span class="a-tag">WebSockets</span>
+          <span class="a-tag">REST APIs</span>
+          <span class="a-tag">Docker</span>
+          <span class="a-tag">Linux</span>
+          <span class="a-tag">Distributed Systems</span>
+        </div>
+
+        <a href="asset/Abhinav Ashishv0.pdf" class="btn btn-primary" target="_blank">
+          <i class="fas fa-file-arrow-down"></i> Download Resume
         </a>
 
-        <div class="nav_menu" id="nav-menu">
-          <ul class="nav_list grid">
-            <li class="nav_item">
-              <a href="#home" class="nav_link active-link">
-                <i class="uil uil-estate nav_icon"></i> Home
-              </a>
-            </li>
-            <li class="nav_item">
-              <a href="#about" class="nav_link">
-                <i class="uil uil-user nav_icon"></i> About
-              </a>
-            </li>
-            <li class="nav_item">
-              <a href="#skills" class="nav_link">
-                <i class="uil uil-file-alt nav_icon"></i> Skills
-              </a>
-            </li>
-            <li class="nav_item">
-              <a href="#qualification" class="nav_link">
-                <i class="uil uil-graduation-cap nav_icon"></i> Qualifications
-              </a>
-            </li>
-            <li class="nav_item">
-              <a href="#projects" class="nav_link">
-                <i class="uil uil-scenery nav_icon"></i> Projects
-              </a>
-            </li>
-            <li class="nav_item">
-              <a href="#contact" class="nav_link">
-                <i class="uil uil-message nav-icon nav_icon"></i> Contact Me
-              </a>
-            </li>
-          </ul>
-          <i class="uil uil-times nav_close" id="nav-close"></i>
-        </div>
-
-        <div class="nav_btns">
-          <!-- Change Theme -->
-          <i class="uil uil-moon change-theme" id="theme-button"></i>
-
-          <div class="nav_toggle" id="nav-toggle">
-            <i class="uil uil-apps"></i>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <!-- Main -->
-    <main class="main">
-      <!-- Home -->
-      <section class="home section" id="home">
-        <div class="home_container container grid">
-          <div class="home_content grid">
-            <div class="home_social">
-              <a href="https://www.linkedin.com/in/abhinav-ashish-8328bb1b5" class="home_social-icon" target="_blank">
-                <i class="uil uil-linkedin-alt"></i>
-              </a>
-
-              <a href="https://github.com/Abhinav7903" class="home_social-icon" target="_blank">
-                <i class="fa fa-github fa-1x icon-3d"></i>
-              </a>
-
-              <a href="https://twitter.com/Abhinavashish14" class="home_social-icon" target="_blank">
-                <i class="uil uil-twitter-alt"></i>
-              </a>
-
-            </div>
-
-            <div class="home_img">
-              <svg class="home_blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink">
-                <mask id="mask0" mask-type="alpha">
-                  <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
-                    130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
-                    97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
-                    0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z" />
-                </mask>
-                <g mask="url(#mask0)">
-                  <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
-                    165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
-                    129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
-                    -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z" />
-                  <image class="home_blob-img" x="12" y="-0" href="asset/image.jpg" />
-                </g>
-              </svg>
-            </div>
-
-            <div class="home_data">
-              <h1 class="home_title">Hi, I'm Abhinav</h1>
-              <h3 class="home_subtitle">I am <span class="type"></span> Developer</h3>
-
-              <p class="home_description">
-                Intermediate level experience in web design and producing quality work
-              </p>
-              <a href="#contact" class="button button--flex">
-                Contact Me
-                <i class="uil uil-message"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="home_scroll">
-            <a href="#about" class="home_scroll-button button--flex">
-              <i class="uil uil-mouse-alt home_scroll-mouse"></i>
-              <span class="home_scroll-name">Scroll Down</span>
-              <i class="uil uil-arrow-down home_scroll-arrow"></i>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- About -->
-      
-      <section class="about section" id="about">
-        <h2 class="section_title">About Me</h2>
-        <span class="section_subtitle">My introduction</span>
-        <div class="about_container container grid">
-          <img src="asset/image.jpg" alt="" class="about_img" />
-          <div class="about_data">
-            <p class="about_description">
-              Hi! 👋 I'm Abhinav, a 20-year-old engineering student pursuing
-              BTech in Computer Science and Engineering. I am a passionate self-learner,
-              exploring and building projects👨‍💻 using
-              various technologies. I am a frontend web developer well versed in
-              HTML, CSS, JavaScript and stand at a beginner
-              of React.
-            </p>
-            <div class="about_button">
-              <a download="" href="asset/Abhinav Ashish.pdf" class="button button--flex" target="_blank">
-                Resume<i class="uil uil-file-download-alt button_icon"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Skills -->
-      <section class="skills section" id="skills">
-        <h1 class="section_title">Skills</h1>
-        <span class="section_subtitle">My Technical Skills</span>
-        <div class="skills_container container grid">
-          <!-- Skill Set 1 -->
-          <div class="skill skills_content skills_open">
-            <div class="skills_header">
-              <i class="uil uil-arrow skills_icon"></i>
-
-              <div>
-                <h1 class="skills_title">Languages</h1>
-                <span class="skills_subtitle">Languages that I have picked up over the years</span>
-              </div>
-
-              <i class="uil uil-angle-down skills_arrow"></i>
-            </div>
-
-            <div class="skills_list grid">
-              <div class="skills_data">
-                <div class="skills_titles">
-                  <span class="single_skill_icon">
-                    <i class="fab fa-java"></i>
-                  </span>
-                  <h3 class="skills_name">Java</h3>
-                </div>
-                <div class="skills_bar_java">
-
-                  <div class="skills_progress_java"></div>
-                </div>
-              </div>
-
-              <div class="skills_data">
-                <div class="skills_titles">
-                  <span class="single_skill_icon">
-                    <i class="fab fa-python"></i>
-                  </span>
-                  <h3 class="skills_name">Python</h3>
-                </div>
-                <div class="skills_bar_py">
-                  <div class="skills_progress_py"></div>
-                </div>
-              </div>
-
-              <div class="skills_data">
-                <div class="skills_titles">
-                  <span class="single_skill_icon">
-                    <i class="fab fa-html5"></i>
-                  </span>
-                  <h3 class="skills_name">HTML</h3>
-                </div>
-                <div class="skills_bar_html">
-                  <div class="skills_progress_html"></div>
-                </div>
-              </div>
-
-              <div class="skills_data">
-                <div class="skills_titles">
-                  <span class="single_skill_icon">
-                    <i class="fab fa-css3-alt"></i>
-                  </span>
-                  <h3 class="skills_name">CSS</h3>
-                </div>
-                <div class="skills_bar_css">
-                  <div class="skills_progress_css"></div>
-                </div>
-              </div>
-
-              <div class="skills_data">
-                <div class="skills_titles">
-                  <span class="single_skill_icon">
-                    <i class="fab fa-js-square"></i>
-                  </span>
-                  <h3 class="skills_name">JavaScript</h3>
-                </div>
-                <div class="skills_bar_js">
-                  <div class="skills_progress_js"></div>
-                </div>
-              </div>
-
-              <div class="skills_data">
-                <div class="skills_titles">
-                  <span class="single_skill_icon">
-                    <i class="fa fa-android"></i>
-                  </span>
-                  <h3 class="skills_name">Flutter</h3>
-                </div>
-                <div class="skills_bar_andr">
-                  <div class="skills_progress_andr"></div>
-                </div>
-              </div>
-
-              <div class="skills_data">
-                <div class="skills_titles">
-                  <span class="single_skill_icon">
-                    <i class="fab fa-react"></i>
-                  </span>
-                  <h3 class="skills_name">React</h3>
-                </div>
-                <div class="skills_bar_react">
-                  <div class="skills_progress_react"></div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-
-
-
-          <!-- Skill Set 3 -->
-          <div class="skill skills_content">
-            <div class="skills_header">
-              <i class="uil uil-wrench skills_icon"></i>
-
-              <div>
-                <h1 class="skills_title">Tools</h1>
-                <span class="skills_subtitle">Tools that I know and use on a daily basis</span>
-              </div>
-
-              <i class="uil uil-angle-down skills_arrow"></i>
-            </div>
-
-            <div class="skills_list grid">
-              <div class="skills_data">
-                <div class="skills_titles">
-                  <span class="single_skill_icon">
-                    <i class="fab fa-git-alt"></i>
-                  </span>
-                  <h3 class="skills_name">Git</h3>
-                </div>
-                <div class="skills_bar_git">
-                  <div class="skills_progress_git"></div>
-                </div>
-              </div>
-
-              <div class="skills_data">
-                <div class="skills_titles">
-                  <span class="single_skill_icon">
-                    <i class="fab fa-github"></i>
-                  </span>
-                  <h3 class="skills_name">GitHub</h3>
-                </div>
-                <div class="skills_bar_github">
-                  <div class="skills_progress_github"></div>
-                </div>
-              </div>
-
-              <div class="skills_data">
-                <div class="skills_titles">
-                  <span class="single_skill_icon">
-                    <?xml version="1.0" ?><svg baseProfile="tiny" height="40px" id="Layer_1" version="1.2"
-                      viewBox="0 0 512 512" width="40px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink">
-                      <g>
-                        <path
-                          d="M297.036,205.578l-36.334,33.809l-33.716-68.005l17.446-39.108c4.416-7.84,11.621-7.855,16.037,0   L297.036,205.578z"
-                          fill="#FFA000" />
-                        <polygon fill="#F57F17" points="260.702,239.386 124.924,365.697 226.986,171.381  " />
-                        <path
-                          d="M336.776,153.901c6.491-6.239,13.202-4.111,14.912,4.729l35.342,205.375L269.873,434.22   c-4.1,2.264-14.957,3.246-14.957,3.246s-9.91-1.185-13.687-3.281L124.92,365.69L336.776,153.901z"
-                          fill="#FFCA28" />
-                        <path
-                          d="M226.986,171.381L124.924,365.697l45.46-283.998c1.674-8.847,6.71-9.699,11.203-1.89L226.986,171.381z"
-                          fill="#FFA000" />
-                      </g>
-                    </svg>
-                  </span>
-                  <h3 class="skills_name">Firebase</h3>
-                </div>
-                <div class="skills_bar_github">
-                  <div class="skills_progress_github"></div>
-                </div>
-              </div>
-
-
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Qualifications -->
-      <section class="qualification section" id="qualification">
-        <h2 class="section_title">Qualifications</h2>
-        <span class="section_subtitle">My Educational Qualification & Work Experience</span>
-
-        <div class="qualification_container container">
-          <div class="qualification_tabs">
-            <div class="qualification_button button-flex" id="educationheader">
-              <i class="uil uil-graduation-cap qualification_icon"></i>Education
-            </div>
-
-
-
-          </div>
-        </div>
-
-        <div class="qualification_sections" id="left-side-1">
-          <!-- Educational Qualification -->
-          <div class="qualification_content qualification_active" data-content id="education">
-            <!-- BTech IT -->
-            <div class="qualification_data">
-              <div>
-                <h3 class="qualification_title">BTech Computer Science Engineering</h3>
-                <span class="qualification_subtitle">Future Institute of Engineering and Management</span>
-                <div class="qualification_calendar">
-                  <i class="uil uil-calendar-alt"></i>
-                  2020 - 2024
-                </div>
-              </div>
-
-              <div>
-                <span class="qualification_circle"></span>
-                <span class="qualification_line"></span>
-              </div>
-            </div>
-
-            <!-- School 11-12 -->
-            <div class="qualification_data">
-              <div></div>
-
-              <div>
-                <span class="qualification_circle"></span>
-                <span class="qualification_line"></span>
-              </div>
-
-              <div>
-                <h3 class="qualification_title">Senior Secondary School</h3>
-                <span class="qualification_subtitle">D.A.V Public School,Muzaffarpur</span>
-                <div class="qualification_calendar">
-                  <i class="uil uil-calendar-alt"></i>
-                  2018 - 2020
-                </div>
-              </div>
-            </div>
-
-            <!-- School 1-10 -->
-            <div class="qualification_data" id="left-side-2">
-              <div>
-                <h3 class="qualification_title">Secondary School</h3>
-                <span class="qualification_subtitle">D.A.V Public School,Muzaffarpur</span>
-                <div class="qualification_calendar">
-                  <i class="uil uil-calendar-alt"></i>
-                  2008 - 2018
-                </div>
-              </div>
-              <div>
-                <span class="qualification_circle"></span>
-              </div>
-            </div>
-
-          </div>
-
-
-      </section>
-      <!-- Portfolio -->
-      <section class="portfolio section" id="projects">
-        <h2 class="section_title">Projects</h2>
-        <span class="section_subtitle">Most recent work</span>
-
-        <div class="portfolio_container container swiper-container swiper mySwiper">
-          <div class="swiper-wrapper">
-            
-
-            <!-- Project 1.1 -->
-            <div class="portfolio_content grid swiper-slide">
-              <img src="asset/chatapp.gif" alt="" class="Clock">
-
-              <div class="portfolio_data">
-                <h3 class="portfolio_title">
-                  ChatApp
-                </h3>
-                <p class="portfolio_description">
-                  Real-time chat app using Firebase for backend, React for frontend, ensuring scalability, security, and responsiveness.
-                </p>
-                <a href="https://abhinav7903.github.io/ChatApp/" class="button button-flex button-small portfolio_button"
-                  target="_blank">
-                  Check out
-                  <i class="uil uil-arrow-right button_icon"></i>
-                </a>
-              </div>
-            </div>
-
-            <!-- Project1.2 -->
-            <div class="portfolio_content grid swiper-slide">
-              <img src="asset/VideoChat.png" alt="" class="Clock">
-
-              <div class="portfolio_data">
-                <h3 class="portfolio_title">
-                  VideoChat
-                </h3>
-                <p class="portfolio_description">
-                  Real-time Videochat app using Firebase and JavaScript for backend with WebRTC for videochat, HTML and CSS for frontend, ensuring scalability, security, and responsiveness.
-                </p>
-                <a href="https://abhinav7903.github.io/VideoChat/" class="button button-flex button-small portfolio_button"
-                  target="_blank">
-                  Check out
-                  <i class="uil uil-arrow-right button_icon"></i>
-                </a>
-              </div>
-            </div>
-            <!--  -->
-
-            <!-- Project 0 -->
-            <div class="portfolio_content grid swiper-slide">
-              <img src="asset/weather.gif" alt="" class="Clock">
-
-              <div class="portfolio_data">
-                <h3 class="portfolio_title">
-                  WeatherApp  
-                </h3>
-                <p class="portfolio_description">
-                  A weather app build using ReactJs and OpenWeather API with Firebase Authentication.
-                </p>
-                <a href="https://abhinav7903.github.io/WeatherApp/" class="button button-flex button-small portfolio_button"
-                  target="_blank">
-                  Check out
-                  <i class="uil uil-arrow-right button_icon"></i>
-                </a>
-              </div>
-            </div>
-
-            <!-- Project 1 -->
-            <div class="portfolio_content grid swiper-slide">
-              <img src="asset/c.gif" alt="" class="Clock">
-
-              <div class="portfolio_data">
-                <h3 class="portfolio_title">
-                  Clock
-                </h3>
-                <p class="portfolio_description">
-                  A basic Clock built using HTML, CSS, and JavaScript.
-                </p>
-                <a href="https://abhinav7903.github.io/Clock/" class="button button-flex button-small portfolio_button"
-                  target="_blank">
-                  Check out
-                  <i class="uil uil-arrow-right button_icon"></i>
-                </a>
-              </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="portfolio_content grid swiper-slide">
-              <img src="asset/p.gif" alt="" class="portfolio_img">
-
-              <div class="portfolio_data">
-                <h3 class="portfolio_title">
-                  Personal Portfolio Website
-                </h3>
-                <p class="portfolio_description">
-                  My Personal Portfolio Website made using only HTML, CSS, and JS with a clean and minimal UI.
-                </p>
-                <a href="#" class="button button-flex button-small portfolio_button" target="_blank">
-                  Check out
-                  <i class="uil uil-arrow-right button_icon"></i>
-                </a>
-              </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="portfolio_content grid swiper-slide">
-              <img src="asset/currency.gif" alt="" class="Currency">
-
-              <div class="portfolio_data">
-                <h3 class="portfolio_title">
-                  Indian Currency Recognition
-                </h3>
-                <p class="portfolio_description">
-                  A Machine Learning model that can recognize Indian Currency Notes using Python and CNN model.
-                </p>
-                <a href="https://github.com/Abhinav7903/Indian-Currency-/blob/main/README.md"
-                  class="button button-flex button-small portfolio_button" target="_blank">
-                  Check out
-                  <i class="uil uil-arrow-right button_icon"></i>
-                </a>
-              </div>
-            </div>
-            <!-- Project 4 -->
-            <div class="portfolio_content grid swiper-slide">
-              <img src="asset/News.gif" alt="" class="News">
-
-              <div class="portfolio_data">
-                <h3 class="portfolio_title">
-                  News WebApp
-                </h3>
-                <p class="portfolio_description">
-                  A News WebApp made using React and News API.
-                </p>
-                <a href="https://github.com/Abhinav7903/News" class="button button-flex button-small portfolio_button"
-                  target="_blank">
-                  Check out
-                  <i class="uil uil-arrow-right button_icon"></i>
-                </a>
-              </div>
-            </div>
-            <!-- Project 5 -->
-            <div class="portfolio_content grid swiper-slide">
-              <img src="" alt="" class="Notes">
-
-              <div class="portfolio_data">
-                <h3 class="portfolio_title">
-                  Notes App
-                </h3>
-                <p class="portfolio_description">
-                  A Notes App made using Flutter and Firebase.
-                </p>
-                <a href="https://github.com/Abhinav7903/Notes/blob/master/README.md"
-                  class="button button-flex button-small portfolio_button" target="_blank">
-                  Check out
-                  <i class="uil uil-arrow-right button_icon"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-button-next swiper-portfolio-icon">
-            <!-- swiper-button-next -->
-            <i class="uil uil-angle-right-b swiper-portfolio-icon"></i>
-          </div>
-          <div class="swiper-button-prev swiper-portfolio-icon">
-            <!-- swiper-button-prev -->
-            <i class="uil uil-angle-left-b swiper-portfolio-icon"></i>
-          </div>
-          <div class="swiper-pagination">
-
-          </div>
-
-        </div>
-      </section>
-      <!-- Contact Me -->
-      <section class="contact section" id="contact">
-        <h1 class="section_title">Contact Me</h1>
-        <span class="section_subtitle">
-          Want to connect? My inbox is always open!
-        </span>
-
-        <div class="contact_container container grid">
-          <div>
-            <a href="mailto:abhinavashish@gmail.com" target="_blank">
-              <div class="contact_info">
-                <i class="uil uil-envelope-alt contact_icon"></i>
-                <div>
-                  <h3 class="contact_title">Email</h3>
-                  <span class="contact_subtitle">abhinavashish@gmail.com</span>
-                </div>
-              </div>
-            </a>
-
-            <a href="https://calendly.com/abhinavashish" target="_blank">
-              <div class="contact_info">
-                <i class="uil uil-calendar-alt contact_icon"></i>
-                <div>
-                  <h3 class="contact_title">Online Meet</h3>
-                  <span class="contact_subtitle">Schedule an Online Meet</span>
-                </div>
-              </div>
-            </a>
-
-            <a href="https://twitter.com/Abhinavashish14" target="_blank">
-              <div class="contact_info">
-                <i class="uil uil-twitter-alt contact_icon"></i>
-                <div>
-                  <h3 class="contact_title">Twitter</h3>
-                  <span class="contact_subtitle">@Abhinavashish14</span>
-                </div>
-              </div>
-            </a>
-
-            <a href="https://goo.gl/maps/kVkEZXhjU1q2ghjv5" target="_blank">
-              <div class="contact_info">
-                <i class="uil uil-location-point contact_icon"></i>
-                <div>
-                  <h3 class="contact_title">Location</h3>
-                  <span class="contact_subtitle">Kolkata, India</span>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <form action="https://formspree.io/f/mlezzldj" class="contact_form grid" id="contact-form" method="POST">
-            <div id="alert" class="alert_style"></div>
-            <div class="contact_inputs grid">
-              <div class="contact_content">
-                <label class="contact_label">Name</label>
-                <input type="text" name="name" class="contact_input" id="name" required>
-              </div>
-              <div class="contact_content">
-                <label for="email" class="contact_label">Email</label>
-                <input type="email" name="email" class="contact_input" id="email" required>
-              </div>
-            </div>
-            <div class="contact_content">
-              <label for="subject" class="contact_label">Subject</label>
-              <input type="text" name="subject" class="contact_input" id="subject" required>
-            </div>
-            <div class="contact_content">
-              <label for="message" class="contact_label">Message</label>
-              <textarea name="message" id="" cols="0" rows="7" class="contact_input message" id="message"
-                required></textarea>
-            </div>
-
-            <div>
-              <button type="submit" class="button button-flex">
-                Send Message
-                <i class="uil uil-message button_icon"></i>
-              </button>
-            </div>
-          </form>
-
-        </div>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer_bg">
-        <div class="footer_container container grid">
-          <div>
-            <h5 class="footer_title h5">Abhinav Ashish</h5>
-            <span class="footer_subtitle"> Developer</span>
-          </div>
-
-          <ul class="footer_links">
-            <li>
-              <a href="#about" class="footer_link">About</a>
-            </li>
-            <li>
-              <a href="#projects" class="footer_link">Projects</a>
-            </li>
-            <li>
-              <a href="#contact" class="footer_link">Contact Me</a>
-            </li>
-          </ul>
-
-          <div class="footer_socials">
-            <a href="https://www.linkedin.com/in/abhinav-ashish-8328bb1b5" target="_blank" class="footer_social">
-              <i class="uil uil-linkedin-alt"></i>
-            </a>
-            <a href="https://github.com/Abhinav7903" target="_blank" class="footer_social">
-              <i class="uil uil-github-alt"></i>
-            </a>
-            <a href="https://twitter.com/Abhinavashish14" target="_blank" class="footer_social">
-              <i class="uil uil-twitter-alt"></i>
-            </a>
-
-          </div>
-        </div>
-
-        <p class="footer_copy">&#169; Abhinav Ashish. All rights reserved</p>
       </div>
-    </footer>
 
-    <!-- Scroll Top -->
-    <a href="#" class="scrollup" id="scroll-up">
-      <i class="uil uil-arrow-up scrollup_icon"></i>
-    </a>
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    </div>
+  </div>
+</section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
-    <script src="js/script.js"></script>
+    <!-- ═══════════════ SKILLS ═══════════════ -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="sh" data-reveal>
+          <span class="sh-tag">Skills</span>
+          <h2 class="sh-title">Tech Stack</h2>
+          <p class="sh-sub">Technologies I work with every day</p>
+        </div>
 
-    <!-- Particle js -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+        <div class="skills-grid">
+          <!-- Languages -->
+          <div class="skill-cat" data-reveal>
+            <div class="sc-head">
+              <i class="fas fa-code"></i> Languages
+            </div>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="fab fa-golang"></i>Go</span>
+              <span class="skill-pill"><i class="fab fa-js-square"></i>JavaScript</span>
+              <span class="skill-pill"><i class="fab fa-python"></i>Python</span>
+              <span class="skill-pill"><i class="fab fa-java"></i>Java</span>
+              <span class="skill-pill"><i class="fab fa-html5"></i>HTML5</span>
+              <span class="skill-pill"><i class="fab fa-css3-alt"></i>CSS3</span>
+              <span class="skill-pill"><i class="fab fa-react"></i>React</span>
+            </div>
+          </div>
 
-    <!-- <script src="js/particles.js"></script> -->
-    <script src="js/app.js"></script>
-  </body>
+          <!-- Backend -->
+          <div class="skill-cat" data-reveal>
+            <div class="sc-head">
+              <i class="fas fa-server"></i> Backend &amp; Data
+            </div>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="fas fa-diagram-project"></i>Distributed Systems</span>
+              <span class="skill-pill"><i class="fas fa-network-wired"></i>Network Protocols</span>
+              <span class="skill-pill"><i class="fas fa-sitemap"></i>System Design</span>
+              <span class="skill-pill"><i class="fas fa-database"></i>PostgreSQL</span>
+              <span class="skill-pill"><i class="fas fa-bolt"></i>Redis</span>
+              <span class="skill-pill"><i class="fas fa-fire"></i>Firebase</span>
+              <span class="skill-pill"><i class="fas fa-circle-nodes"></i>Neo4j</span>
+              <span class="skill-pill"><i class="fas fa-plug-circle-bolt"></i>WebSockets</span>
+              <span class="skill-pill"><i class="fas fa-grip"></i>REST APIs</span>
+            </div>
+          </div>
+          <!-- Cloud -->
+          <div class="skill-cat" data-reveal>
+            <div class="sc-head">
+              <i class="fas fa-cloud"></i> Cloud & DevOps
+            </div>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="fab fa-aws"></i>AWS</span>
+              <span class="skill-pill"><i class="fab fa-google"></i>GCP</span>
+              <span class="skill-pill"><i class="fab fa-microsoft"></i>AZURE</span>
+              <span class="skill-pill"><i class="fas fa-cloud"></i>S3</span>
+             <span class="skill-pill"><i class="fas fa-cube"></i>Kubernetes</span>
+            </div>
+          </div>
 
+          <!-- Tools -->
+          <div class="skill-cat" data-reveal>
+            <div class="sc-head">
+              <i class="fas fa-screwdriver-wrench"></i> Tools &amp; Infra
+            </div>
+            <div class="skill-pills">
+              <span class="skill-pill"><i class="fab fa-git-alt"></i>Git</span>
+              <span class="skill-pill"><i class="fab fa-github"></i>GitHub</span>
+              <span class="skill-pill"><i class="fab fa-docker"></i>Docker</span>
+              <span class="skill-pill"><i class="fab fa-linux"></i>Linux</span>
+              <span class="skill-pill"><i class="fab fa-react"></i>React</span>
+              <span class="skill-pill"><i class="fas fa-terminal"></i>Bash</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- ═══════════════ EXPERIENCE ═══════════════ -->
+<section class="section" id="experience">
+  <div class="container">
+
+    <div class="sh" data-reveal>
+      <span class="sh-tag">Background</span>
+      <h2 class="sh-title">Experience & Education</h2>
+      <p class="sh-sub">My professional journey so far</p>
+    </div>
+
+    <div class="timeline-wrap">
+
+      <!-- Professional Experience -->
+      <div class="tl-item" data-reveal>
+        <div class="tl-dot"></div>
+        <div class="tl-card gc">
+
+          <span class="tl-type">Professional Experience</span>
+
+          <h3 class="tl-title">Senior Software Engineer</h3>
+
+          <p class="tl-org">
+            <a href="https://hornettechnology.in/" target="_blank">
+              Hornet Decentratech Pvt Ltd
+            </a>
+          </p>
+
+          <p class="tl-date">
+            <i class="uil uil-calendar-alt"></i> 2024 — Present
+          </p>
+
+          <p class="tl-desc">
+            Working as a backend developer focusing on building scalable APIs and
+            backend systems. Primarily using <strong>Go</strong>, 
+            <strong>PostgreSQL</strong>, and <strong>Redis</strong>.
+            Contributing to production systems, improving API performance,
+            and designing clean backend architectures.
+          </p>
+
+        </div>
+      </div>
+
+
+      <!-- Personal Projects -->
+      <div class="tl-item" data-reveal>
+        <div class="tl-dot"></div>
+        <div class="tl-card gc">
+
+          <span class="tl-type">Personal Projects</span>
+
+          <h3 class="tl-title">Independent Builder</h3>
+
+          <p class="tl-org">
+            <a href="https://github.com/Abhinav7903" target="_blank">
+              GitHub — @Abhinav7903
+            </a>
+          </p>
+
+          <p class="tl-date">
+            <i class="uil uil-calendar-alt"></i> 2022 — Present
+          </p>
+
+          <p class="tl-desc">
+            Alongside my professional work, I build personal projects to explore
+            backend engineering, distributed systems, and network protocols.
+            Notable projects include:
+            <strong>TermChat</strong> (encrypted terminal chat using Telnet,
+            PostgreSQL, Redis & Tailscale),
+            <strong>Backend-For-Split</strong> (expense splitting API),
+            and <strong>Pcap-reader-for-bitcoin</strong>
+            (Bitcoin network protocol decoder).
+          </p>
+
+        </div>
+      </div>
+
+
+      <!-- Education -->
+      <div class="tl-item" data-reveal>
+        <div class="tl-dot"></div>
+        <div class="tl-card gc">
+
+          <span class="tl-type">Education</span>
+
+          <h3 class="tl-title">B.Tech — Computer Science Engineering</h3>
+
+          <p class="tl-org">
+            Future Institute of Engineering & Management, Kolkata
+          </p>
+
+          <p class="tl-date">
+            <i class="uil uil-calendar-alt"></i> 2020 — 2024
+          </p>
+
+          <p class="tl-desc">
+            Studied computer science fundamentals including data structures,
+            algorithms, operating systems, and networking. Built multiple
+            full-stack projects including web applications, mobile apps using
+            Flutter, and backend systems in Go and Java.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+    <!-- ═══════════════ PROJECTS ═══════════════ -->
+<section class="section" id="projects">
+  <div class="container">
+
+    <div class="sh" data-reveal>
+      <span class="sh-tag">Portfolio</span>
+      <h2 class="sh-title">Featured Projects</h2>
+      <p class="sh-sub">Auto-fetched from GitHub</p>
+    </div>
+
+    <div class="proj-filter" data-reveal>
+      <button class="f-btn active" data-filter="all">All</button>
+      <button class="f-btn" data-filter="Go">Go</button>
+      <button class="f-btn" data-filter="JavaScript">JavaScript</button>
+      <button class="f-btn" data-filter="other">Other</button>
+    </div>
+
+    <div class="proj-grid" id="proj-grid">
+      <div class="proj-loading" id="proj-loading">
+        <div class="spinner"></div>
+        <p>Fetching from GitHub...</p>
+      </div>
+    </div>
+
+    <div class="proj-pagination">
+      <button id="prevPage" class="pg-btn" disabled>← Prev</button>
+      <span id="pageInfo"></span>
+      <button id="nextPage" class="pg-btn">Next →</button>
+    </div>
+
+  </div>
+</section>
+
+    <!-- ═══════════════ CONTACT ═══════════════ -->
+    <section class="section contact-section" id="contact">
+      <div class="contact-bg-grid"></div>
+      <div class="container">
+
+        <div class="sh" data-reveal>
+          <span class="sh-tag">Contact</span>
+          <h2 class="sh-title">Let's Create Together</h2>
+          <p class="sh-sub">Have a project in mind? I’d love to hear about it.</p>
+        </div>
+
+        <div class="contact-layout" data-reveal>
+
+          <!-- LEFT: Info -->
+          <div class="contact-info">
+
+
+            <div class="ci-links">
+              <a href="mailto:abhinavashish@gmail.com" class="ci-link" id="cta-email">
+                <div class="ci-link-icon"><i class="fas fa-envelope"></i></div>
+                <div class="ci-link-body">
+                  <span class="ci-link-label">Email</span>
+                  <span class="ci-link-val">abhinavashish@gmail.com</span>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square ci-link-arrow"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/abhinav-ashish-8328bb1b5" target="_blank" class="ci-link" id="cta-linkedin">
+                <div class="ci-link-icon" style="background:rgba(0,119,181,0.12);color:#0077b5">
+                  <i class="fab fa-linkedin-in"></i>
+                </div>
+                <div class="ci-link-body">
+                  <span class="ci-link-label">LinkedIn</span>
+                  <span class="ci-link-val">Abhinav Ashish</span>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square ci-link-arrow"></i>
+              </a>
+              <a href="https://github.com/Abhinav7903" target="_blank" class="ci-link" id="cta-github">
+                <div class="ci-link-icon"><i class="fab fa-github"></i></div>
+                <div class="ci-link-body">
+                  <span class="ci-link-label">GitHub</span>
+                  <span class="ci-link-val">@Abhinav7903</span>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square ci-link-arrow"></i>
+              </a>
+              <a href="https://calendly.com/abhinavashish" target="_blank" class="ci-link" id="cta-calendly">
+                <div class="ci-link-icon" style="background:rgba(0,229,192,0.1);color:var(--accent-2)">
+                  <i class="fas fa-calendar-days"></i>
+                </div>
+                <div class="ci-link-body">
+                  <span class="ci-link-label">Schedule a Call</span>
+                  <span class="ci-link-val">Book on Calendly</span>
+                </div>
+                <i class="fas fa-arrow-up-right-from-square ci-link-arrow"></i>
+              </a>
+            </div>
+
+
+          </div>
+
+          <!-- RIGHT: Premium Form -->
+          <div class="contact-form-wrap">
+            <form id="contact-form" action="https://formspree.io/f/mlezzldj" method="POST">
+
+              <div class="cf-row">
+                <div class="cf-field">
+                  <input type="text" id="f-name" name="name" class="cf-input" placeholder=" " required autocomplete="off">
+                  <label for="f-name" class="cf-label">Your Name</label>
+                  <div class="cf-line"></div>
+                </div>
+                <div class="cf-field">
+                  <input type="email" id="f-email" name="email" class="cf-input" placeholder=" " required autocomplete="off">
+                  <label for="f-email" class="cf-label">Email Address</label>
+                  <div class="cf-line"></div>
+                </div>
+              </div>
+
+              <div class="cf-field">
+                <input type="text" id="f-subject" name="subject" class="cf-input" placeholder=" " autocomplete="off">
+                <label for="f-subject" class="cf-label">Subject</label>
+                <div class="cf-line"></div>
+              </div>
+
+              <div class="cf-field cf-field-area">
+                <textarea id="f-msg" name="message" class="cf-input cf-textarea" placeholder=" " required></textarea>
+                <label for="f-msg" class="cf-label cf-label-area">
+                  <span id="placeholder-cycling">Tell me about your project...</span>
+                </label>
+                <div class="cf-line"></div>
+              </div>
+
+              <!-- Magnetic Button Wrapper -->
+              <div class="magnetic-wrap" id="magnetic-wrap">
+                <button type="submit" class="send-btn" id="submit-btn">
+                  <!-- Plane SVG (Lottie-style CSS animation) -->
+                  <div class="send-plane-wrap" id="send-plane-wrap">
+                    <svg class="send-plane" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <span class="send-label">Send Message</span>
+                  <div class="send-ripple"></div>
+                </button>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ╔════════════ PREMIUM FOOTER ════════════╗ -->
+  <footer class="footer-v2">
+
+    <!-- Top shimmer line -->
+    <div class="fv2-shimmer"></div>
+
+    <div class="container">
+
+      <!-- ── Row 1: Brand + columns ── -->
+      <div class="fv2-top">
+
+        <!-- Brand -->
+        <div class="fv2-brand">
+          <a href="#hero" class="fv2-wordmark">
+            Abhinav<span class="logo-dot">.</span>
+          </a>
+          <p class="fv2-tagline">
+            Building backend systems that<br>scale with purpose.
+          </p>
+          <!-- Status pill -->
+          <div class="fv2-status">
+            <span class="fv2-status-dot"></span>
+            Open to opportunities
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="fv2-col">
+          <span class="fv2-col-head">Navigation</span>
+          <a href="#hero"       class="fv2-link">Home</a>
+          <a href="#about"      class="fv2-link">About</a>
+          <a href="#skills"     class="fv2-link">Skills</a>
+          <a href="#experience" class="fv2-link">Experience</a>
+          <a href="#projects"   class="fv2-link">Projects</a>
+          <a href="#contact"    class="fv2-link">Contact</a>
+        </div>
+
+        <!-- Work -->
+        <div class="fv2-col">
+          <span class="fv2-col-head">Work</span>
+          <a href="https://github.com/Abhinav7903/TermChat" target="_blank" class="fv2-link">TermChat</a>
+          <a href="https://github.com/Abhinav7903/Backend-For-Split" target="_blank" class="fv2-link">Backend-For-Split</a>
+          <a href="https://github.com/Abhinav7903/Pcap-reader-for-bitcoin" target="_blank" class="fv2-link">BTC Decoder</a>
+          <a href="https://github.com/Abhinav7903" target="_blank" class="fv2-link">All Projects ↗</a>
+        </div>
+
+        <!-- Connect -->
+        <div class="fv2-col">
+          <span class="fv2-col-head">Connect</span>
+          <a href="mailto:abhinavashish@gmail.com" class="fv2-link">
+            <i class="fas fa-envelope"></i> Email
+          </a>
+          <a href="https://github.com/Abhinav7903" target="_blank" class="fv2-link">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/abhinav-ashish-8328bb1b5" target="_blank" class="fv2-link">
+            <i class="fab fa-linkedin-in"></i> LinkedIn
+          </a>
+          <a href="https://twitter.com/Abhinavashish14" target="_blank" class="fv2-link">
+            <i class="fab fa-x-twitter"></i> Twitter / X
+          </a>
+        </div>
+
+      </div>
+
+      <!-- ── Divider ── -->
+      <div class="fv2-divider"></div>
+
+      <!-- ── Row 2: Bottom bar ── -->
+      <div class="fv2-bottom">
+        <p class="fv2-copy">
+          &copy; 2025 Abhinav Ashish.
+        </p>
+        <a href="asset/Abhinav Ashishv0.pdf" target="_blank" class="fv2-resume-btn">
+          <i class="fas fa-file-arrow-down"></i> Resume
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- ╔═══════════════════ SUCCESS MODAL ═══════════════════╗ -->
+  <div class="success-modal-overlay" id="success-overlay">
+    <div class="success-modal" id="success-modal">
+
+      <!-- Animated SVG checkmark (Lottie-style stroke animation) -->
+      <div class="sm-check">
+        <svg viewBox="0 0 56 56" class="sm-check-svg">
+          <circle class="sm-check-circle" cx="28" cy="28" r="26" fill="none"/>
+          <path class="sm-check-tick" fill="none" d="M16 28l8 8 16-16"/>
+        </svg>
+      </div>
+
+      <h3 class="sm-title">Message Sent! 🚀</h3>
+      <p class="sm-sub">Thanks <strong id="sm-name">there</strong>! I'll get back to you within 24 hours.</p>
+
+      <button class="sm-close" id="sm-close-btn">
+        Sounds good &nbsp;<i class="fas fa-check"></i>
+      </button>
+
+      <!-- Auto-dismiss progress bar -->
+      <div class="sm-progress">
+        <div class="sm-progress-bar" id="sm-progress-bar"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Confetti canvas (fixed overlay, pointer-events none) -->
+  <canvas id="confetti-canvas" style="position:fixed;inset:0;pointer-events:none;z-index:9999;width:100%;height:100%"></canvas>
+
+  <script src="js/script.js"></script>
+</body>
 </html>
