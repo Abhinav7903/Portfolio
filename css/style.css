@@ -87,6 +87,8 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-h);
   font-size: 16px;
+  overflow-x: hidden;
+  /* block horizontal scroll at root */
 }
 
 body {
@@ -168,8 +170,8 @@ textarea {
 }
 
 .orb-1 {
-  width: 700px;
-  height: 700px;
+  width: min(700px, 140vw);
+  height: min(700px, 140vw);
   background: var(--accent);
   opacity: 0.35;
   top: -200px;
@@ -178,8 +180,8 @@ textarea {
 }
 
 .orb-2 {
-  width: 500px;
-  height: 500px;
+  width: min(500px, 110vw);
+  height: min(500px, 110vw);
   background: var(--accent-2);
   opacity: 0.25;
   bottom: -150px;
@@ -188,8 +190,8 @@ textarea {
 }
 
 .orb-3 {
-  width: 350px;
-  height: 350px;
+  width: min(350px, 90vw);
+  height: min(350px, 90vw);
   background: var(--accent-3);
   opacity: 0.15;
   top: 40%;
@@ -556,7 +558,7 @@ textarea {
 .hero-card-main {
   position: relative;
   z-index: 2;
-  width: 340px;
+  width: min(340px, 92vw);
   border-radius: var(--r-xl);
   overflow: hidden;
   border: 1px solid var(--border-glass);
@@ -771,8 +773,8 @@ textarea {
 /* Glow behind card */
 .card-glow {
   position: absolute;
-  width: 380px;
-  height: 420px;
+  width: min(380px, 90vw);
+  height: min(420px, 90vw);
   border-radius: var(--r-xl);
   background: var(--gradient);
   opacity: 0.15;
@@ -1753,10 +1755,17 @@ textarea {
 }
 
 /* ===== RESPONSIVE ===== */
+/* ╔══════════════════════════════════════════════════════╗
+   ║  RESPONSIVE — 1024 → 768 → 480 → 375 (iPhone mini) ║
+   ╚══════════════════════════════════════════════════════╝ */
+
+/* ── Tablet / small laptop ── */
 @media (max-width: 1024px) {
+
+  /* Hero */
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 40px;
     text-align: center;
   }
 
@@ -1769,65 +1778,89 @@ textarea {
     justify-content: center;
   }
 
+  .hero-stats {
+    justify-content: center;
+  }
+
   .hero-visual-wrap {
     order: -1;
-    min-height: 340px;
+    min-height: unset;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Terminal full-width on tablet */
+  .hero-terminal {
+    width: min(360px, 92vw);
   }
 
   .hero-card-main {
     width: 260px;
-    height: 320px;
-  }
-
-  .f-chip-2 {
-    left: -2%;
   }
 
   .f-chip-1 {
     right: -2%;
   }
 
+  .f-chip-2 {
+    left: -2%;
+  }
+
   .f-chip-3 {
     right: -2%;
   }
 
+  /* About */
   .about-grid {
     grid-template-columns: 1fr;
   }
 
   .about-img-wrap {
-    display: flex;
     justify-content: center;
   }
 
-  .about-img {
-    max-width: 300px;
+  .sphere-wrap {
+    width: 340px;
+    height: 340px;
   }
 
+  /* Skills */
   .skills-grid {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
-  .contact-grid {
+  /* Contact */
+  .contact-layout {
     grid-template-columns: 1fr;
   }
 }
 
+/* ── Large phone / small tablet ── */
 @media (max-width: 768px) {
+  :root {
+    --nav-h: 60px;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
   .section {
     padding: 72px 0;
   }
 
+  /* Header */
   .header {
     top: 10px;
-    width: calc(100% - 24px);
+    width: calc(100% - 20px);
+  }
+
+  .nav-list {
+    display: none;
   }
 
   .hamburger {
-    display: flex;
-  }
-
-  .nav-menu .nav-list {
     display: flex;
   }
 
@@ -1835,9 +1868,22 @@ textarea {
     display: flex;
   }
 
-  .hero-card-main {
-    width: 220px;
-    height: 280px;
+  .nav-menu .nav-list {
+    display: flex;
+  }
+
+  /* Hero */
+  .hero {
+    padding-top: calc(var(--nav-h) + 32px);
+  }
+
+  .hero-name {
+    font-size: clamp(2rem, 8vw, 3rem);
+    letter-spacing: -1.5px;
+  }
+
+  .hero-bio {
+    font-size: 0.92rem;
   }
 
   .f-chip {
@@ -1845,47 +1891,124 @@ textarea {
   }
 
   .hero-stats {
-    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
+  /* Terminal responsive */
+  .hero-terminal {
+    width: min(340px, 92vw);
+    animation: none;
+    /* disable float on touch — prevents scroll jitter */
+  }
+
+  .terminal-body {
+    height: 180px;
+    font-size: 0.82rem;
+    padding: 16px;
+  }
+
+  .terminal-avatar {
+    padding: 14px 0;
+  }
+
+  /* About */
+  .sphere-wrap {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Skills */
   .skills-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 
-  .form-row {
+  /* Timeline */
+  .timeline-wrap {
+    padding-left: 24px;
+  }
+
+  .tl-dot {
+    left: -24px;
+  }
+
+  /* Projects */
+  .proj-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .proj-filter {
+    gap: 6px;
+  }
+
+  .f-btn {
+    padding: 6px 14px;
+    font-size: 0.78rem;
+  }
+
+  /* Contact form */
+  .cf-row {
     grid-template-columns: 1fr;
+    gap: 0;
   }
 
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
+  .contact-form-wrap {
+    padding: 28px 20px;
   }
 
-  .footer-nav {
+  .magnetic-wrap {
     justify-content: center;
   }
 
-  .footer-socials {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-name {
-    font-size: 2.2rem;
-  }
-
-  .hero-ctas {
-    flex-direction: column;
-  }
-
-  .btn {
+  .send-btn {
     width: 100%;
     justify-content: center;
   }
 
-  .proj-grid {
-    grid-template-columns: 1fr;
+  /* Footer */
+  .fv2-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .fv2-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ── Phone ── */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  /* Hero */
+  .hero-name {
+    font-size: 1.85rem;
+    letter-spacing: -1px;
+  }
+
+  .hero-role {
+    font-size: 0.95rem;
+  }
+
+  .hero-bio {
+    font-size: 0.88rem;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .hero-stats {
@@ -1900,7 +2023,367 @@ textarea {
   .hero-stat:last-child {
     border-bottom: none;
   }
+
+  /* Terminal — fits any phone width */
+  .hero-terminal {
+    width: min(340px, 94vw);
+    border-radius: var(--r-lg);
+  }
+
+  .terminal-body {
+    height: 165px;
+    font-size: 0.78rem;
+    padding: 14px;
+  }
+
+  .terminal-avatar {
+    padding: 12px 0;
+  }
+
+  .terminal-line {
+    font-size: 0.78rem;
+  }
+
+  /* About sphere */
+  .sphere-wrap {
+    width: 260px;
+    height: 260px;
+  }
+
+  /* Section headers */
+  .sh-title {
+    font-size: 1.8rem;
+    letter-spacing: -1px;
+  }
+
+  .sh-sub {
+    font-size: 0.88rem;
+  }
+
+  /* Skills pills smaller */
+  .skill-pill {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
+
+  /* Projects */
+  .proj-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .proj-pagination {
+    gap: 12px;
+  }
+
+  /* Contact */
+  .ci-link-val {
+    font-size: 0.78rem;
+  }
+
+  .contact-form-wrap {
+    padding: 28px 20px;
+  }
+
+  /* Footer */
+  .fv2-top {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .fv2-wordmark {
+    font-size: 1.5rem;
+  }
+
+  .fv2-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .fv2-resume-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
+
+/* ── iPhone mini / SE (375px) ── */
+@media (max-width: 390px) {
+  html {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 0 14px;
+  }
+
+  .section {
+    padding: 52px 0;
+  }
+
+  /* Nav */
+  .header {
+    width: calc(100% - 16px);
+    border-radius: var(--r-lg);
+  }
+
+  .nav-logo .logo-text {
+    font-size: 1.3rem;
+  }
+
+  /* Hero */
+  .hero {
+    padding-top: calc(var(--nav-h) + 24px);
+  }
+
+  .hero-name {
+    font-size: 1.7rem;
+    letter-spacing: -0.8px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.7rem;
+  }
+
+  .hero-role {
+    font-size: 0.9rem;
+  }
+
+  .hero-bio {
+    font-size: 0.84rem;
+    max-width: 100%;
+  }
+
+  /* Terminal — tight fit for iPhone mini */
+  .hero-terminal {
+    width: 100%;
+    border-radius: var(--r-md);
+    animation: none;
+  }
+
+  .terminal-top {
+    padding: 8px 12px;
+  }
+
+  .terminal-title {
+    font-size: 0.6rem;
+  }
+
+  .terminal-body {
+    height: 150px;
+    font-size: 0.72rem;
+    padding: 12px;
+  }
+
+  .terminal-avatar {
+    padding: 10px 0;
+  }
+
+  .terminal-line {
+    font-size: 0.72rem;
+    gap: 4px;
+  }
+
+  .prompt {
+    font-size: 0.68rem;
+  }
+
+  .terminal-cursor {
+    width: 6px;
+    height: 13px;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 11px 20px;
+    font-size: 0.84rem;
+  }
+
+  .send-btn {
+    padding: 13px 24px;
+  }
+
+  /* Hero stats */
+  .hs-num {
+    font-size: 1.2rem;
+  }
+
+  .hs-label {
+    font-size: 0.62rem;
+  }
+
+  .hero-stat {
+    padding: 12px 14px;
+  }
+
+  /* About */
+  .sphere-wrap {
+    width: 230px;
+    height: 230px;
+  }
+
+  .about-p {
+    font-size: 0.86rem;
+  }
+
+  .a-tag {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+  }
+
+  /* Section headers */
+  .sh-title {
+    font-size: 1.55rem;
+  }
+
+  .sh-tag {
+    letter-spacing: 1.5px;
+  }
+
+  /* Skills */
+  .skill-cat {
+    padding: 18px 16px;
+  }
+
+  .sc-head {
+    font-size: 0.9rem;
+  }
+
+  .skill-pill {
+    font-size: 0.72rem;
+    padding: 4px 9px;
+    gap: 5px;
+  }
+
+  /* Timeline */
+  .tl-card {
+    padding: 18px 16px;
+  }
+
+  .tl-title {
+    font-size: 0.98rem;
+  }
+
+  .tl-desc {
+    font-size: 0.82rem;
+  }
+
+  .timeline-wrap {
+    padding-left: 20px;
+  }
+
+  /* Projects */
+  .f-btn {
+    padding: 5px 12px;
+    font-size: 0.74rem;
+  }
+
+  .pc-title {
+    font-size: 0.92rem;
+  }
+
+  .pc-desc {
+    font-size: 0.78rem;
+  }
+
+  .proj-pagination {
+    gap: 8px;
+  }
+
+  .pg-btn {
+    padding: 7px 14px;
+    font-size: 0.78rem;
+  }
+
+  /* Contact */
+  .cf-input {
+    font-size: 0.84rem;
+    padding: 20px 12px 7px;
+  }
+
+  .cf-label {
+    font-size: 0.82rem;
+    left: 12px;
+  }
+
+  .cf-input:focus~.cf-label,
+  .cf-input:not(:placeholder-shown)~.cf-label {
+    font-size: 0.56rem;
+    top: 5px;
+  }
+
+  .ci-link {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .ci-link-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+
+  .ci-link-val {
+    font-size: 0.74rem;
+  }
+
+  /* Success modal */
+  .success-modal {
+    padding: 32px 18px 24px;
+  }
+
+  .sm-title {
+    font-size: 1.3rem;
+  }
+
+  .sm-check {
+    width: 68px;
+    height: 68px;
+  }
+
+  .sm-check-svg {
+    width: 68px;
+    height: 68px;
+  }
+
+  /* Footer */
+  .fv2-top {
+    gap: 20px;
+  }
+
+  .fv2-wordmark {
+    font-size: 1.35rem;
+  }
+
+  .fv2-tagline {
+    font-size: 0.78rem;
+  }
+
+  .fv2-col-head {
+    letter-spacing: 1.5px;
+  }
+
+  .fv2-link {
+    font-size: 0.82rem;
+  }
+
+  .fv2-copy {
+    font-size: 0.72rem;
+  }
+
+  /* Prevent any horizontal overflow */
+  body {
+    overflow-x: hidden;
+  }
+
+  * {
+    max-width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
 
 /* ===== REVEAL ANIMATION ===== */
 /* Items are visible by default; JS can opt-in to the animation */
@@ -1925,12 +2408,14 @@ textarea {
 /* HERO TERMINAL */
 
 .hero-terminal {
-  width: 360px;
+  width: min(360px, 100%);
   border-radius: 16px;
   background: #0c0c16;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
   overflow: hidden;
+  /* Float on desktop only — disabled on mobile via media query */
+  animation: floatTerminal 6s ease-in-out infinite;
 }
 
 .terminal-top {
@@ -1971,11 +2456,11 @@ textarea {
 .terminal-avatar {
   display: flex;
   justify-content: center;
-  padding: 25px 0;
+  padding: 20px 0;
 }
 
 .terminal-avatar img {
-  width: 120px;
+  width: clamp(70px, 28%, 120px);
 }
 
 /* terminal body */
@@ -2061,9 +2546,7 @@ textarea {
   }
 }
 
-.hero-terminal {
-  animation: floatTerminal 6s ease-in-out infinite;
-}
+/* Remove duplicate — animation is now on base class */
 
 @keyframes floatTerminal {
 
@@ -2082,10 +2565,13 @@ textarea {
 /* ── 3-D Tech Sphere (AWS / Cloud style) ── */
 .sphere-wrap {
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: min(400px, 90vw);
+  height: min(400px, 90vw);
   margin: 0 auto;
   cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sphere-wrap:active {
@@ -2178,46 +2664,14 @@ textarea {
   text-align: center;
 }
 
-/* ===== TECH SPHERE ===== */
+/* ===== TECH SPHERE (canonical — replaces duplicate above) ===== */
+/* sphere-wrap already defined; just ensure no stale override */
 
-.sphere-wrap {
-  position: relative;
-  width: 460px;
-  height: 460px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tech-sphere {
-  position: relative;
-  width: 420px;
-  height: 420px;
-  transform-style: preserve-3d;
-}
-
-/* sphere tags */
-.sphere-tag {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  white-space: nowrap;
-  background: rgba(11, 11, 24, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: var(--text-secondary);
-  transition: all 0.25s ease;
-  backdrop-filter: blur(6px);
-}
-
-/* glow behind sphere */
+/* glow behind sphere — fluid */
 .sphere-glow {
   position: absolute;
-  width: 420px;
-  height: 420px;
+  width: min(420px, 90vw);
+  height: min(420px, 90vw);
   border-radius: 50%;
   background: radial-gradient(circle, rgba(124, 111, 255, 0.18), transparent 70%);
   filter: blur(70px);
