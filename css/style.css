@@ -2414,8 +2414,8 @@ textarea {
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
   overflow: hidden;
-  /* Float on desktop only — disabled on mobile via media query */
   animation: floatTerminal 6s ease-in-out infinite;
+  color: #c8c8d0;
 }
 
 .terminal-top {
@@ -2489,10 +2489,13 @@ textarea {
 
 /* TERMINAL LINE */
 
+/* TERMINAL LINE — explicit color so light-mode body color doesn't bleed in */
 .terminal-line {
   display: flex;
   align-items: center;
   margin-bottom: 6px;
+  color: #c8c8d0;
+  /* always light-on-dark regardless of theme */
 }
 
 
