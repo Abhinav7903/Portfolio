@@ -170,6 +170,18 @@
     <!-- terminal body -->
    <div class="terminal-body" id="terminal-body">
 
+  <!-- Hidden input — captures mobile keyboard when terminal is tapped -->
+  <input
+    type="text"
+    id="terminal-mobile-input"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="none"
+    spellcheck="false"h
+    aria-label="Terminal input"
+    style="position:absolute;opacity:0;width:1px;height:1px;top:0;left:0;border:none;outline:none;background:transparent;color:transparent;pointer-events:none;z-index:-1;"
+  >
+
   <div id="terminal-history"></div>
 
   <div class="terminal-line">
@@ -178,7 +190,13 @@
     <span class="terminal-cursor"></span>
   </div>
 
+  <!-- Mobile hint — only visible on touch devices -->
+  <div class="terminal-tap-hint" id="terminal-tap-hint">
+    <i class="fas fa-keyboard"></i> Tap to type
+  </div>
+
 </div>
+
   </div>
 
 </div>

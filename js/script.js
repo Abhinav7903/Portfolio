@@ -564,14 +564,19 @@ loadProjects();
 
 
 /* ═══════════════════════════════════════
-   TERMINAL COMMAND INPUT (hero)
+   TERMINAL — works on desktop AND mobile
+   Mobile: hidden input captures keyboard
+   Desktop: document keydown (unchanged)
 ═══════════════════════════════════════ */
 const terminalText    = document.getElementById('terminal-text');
 const terminalHistory = document.getElementById('terminal-history');
 const terminalBody    = document.getElementById('terminal-body');
+const mobileInput     = document.getElementById('terminal-mobile-input');
+const tapHint         = document.getElementById('terminal-tap-hint');
 
 if (terminalText && terminalHistory && terminalBody) {
   let currentCmd = '';
+  let prevInputVal = '';
 
   const responses = {
     whoami:     'Abhinav Ashish — Software Engineer',
@@ -582,35 +587,115 @@ if (terminalText && terminalHistory && terminalBody) {
     help:       'Commands: whoami  experience  stack  projects  github  clear',
   };
 
-  document.addEventListener('keydown', (e) => {
-    // Only process if not typing in an input/textarea
-    if (['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) return;
-
-    if (e.key === 'Backspace') {
-      currentCmd = currentCmd.slice(0, -1);
-    } else if (e.key === 'Enter') {
-      const cmdLine = document.createElement('div');
-      cmdLine.className = 'terminal-line';
-      cmdLine.innerHTML = `<span class="prompt">abhinav@portfolio:~$</span> ${currentCmd}`;
-      terminalHistory.appendChild(cmdLine);
-
-      if (currentCmd === 'clear') {
-        terminalHistory.innerHTML = '';
-      } else {
-        const out = document.createElement('div');
-        out.className = 'terminal-output';
-        out.textContent = responses[currentCmd] || "command not found — try 'help'";
-        terminalHistory.appendChild(out);
-      }
-      currentCmd = '';
-    } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
-      currentCmd += e.key;
-    }
-
+  /* ── Shared: render current command & scroll ── */
+  const render = () => {
     terminalText.textContent = currentCmd;
     terminalBody.scrollTop = terminalBody.scrollHeight;
+  };
+
+  /* ── Shared: execute command (Enter) ── */
+  const execCmd = () => {
+    const cmdLine = document.createElement('div');
+    cmdLine.className = 'terminal-line';
+    cmdLine.innerHTML = `<span class="prompt">abhinav@portfolio:~$</span> ${currentCmd}`;
+    terminalHistory.appendChild(cmdLine);
+
+    if (currentCmd === 'clear') {
+      terminalHistory.innerHTML = '';
+    } else {
+      const out = document.createElement('div');
+      out.className = 'terminal-output';
+      out.textContent = responses[currentCmd] || "command not found — try 'help'";
+      terminalHistory.appendChild(out);
+    }
+    currentCmd = '';
+    render();
+
+    // Hide the tap hint after first successful command
+    if (tapHint) tapHint.style.display = 'none';
+  };
+
+  /* ─────────────────────────────────────
+     MOBILE: tap terminal → focus hidden
+     input → virtual keyboard opens
+  ───────────────────────────────────── */
+  if (mobileInput) {
+    // Make whole terminal body tappable
+    terminalBody.style.cursor = 'text';
+    terminalBody.addEventListener('click', () => {
+      mobileInput.style.pointerEvents = 'auto';
+      mobileInput.focus();
+    });
+
+    // Show focused state on the cursor
+    mobileInput.addEventListener('focus', () => {
+      terminalBody.classList.add('terminal-active');
+      if (tapHint) tapHint.style.display = 'none';
+    });
+    mobileInput.addEventListener('blur', () => {
+      terminalBody.classList.remove('terminal-active');
+    });
+
+    /* input event — fires for every character on mobile (including
+       autocorrect, IME, swipe keyboard, etc.) */
+    mobileInput.addEventListener('input', () => {
+      const val = mobileInput.value;
+
+      if (val.length > prevInputVal.length) {
+        // Characters were added
+        currentCmd += val.slice(prevInputVal.length);
+      } else if (val.length < prevInputVal.length) {
+        // Backspace / deletion
+        const removed = prevInputVal.length - val.length;
+        currentCmd = currentCmd.slice(0, -removed);
+      }
+      prevInputVal = val;
+      render();
+    });
+
+    /* keydown on hidden input — catches Enter + explicit Backspace */
+    mobileInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        execCmd();
+        // Reset the hidden input so future input events diff correctly
+        mobileInput.value = '';
+        prevInputVal = '';
+      } else if (e.key === 'Backspace' && mobileInput.value === '') {
+        // Edge case: cursor at start but there's still currentCmd content
+        e.preventDefault();
+        currentCmd = currentCmd.slice(0, -1);
+        render();
+      }
+    });
+  }
+
+  /* ─────────────────────────────────────
+     DESKTOP fallback: document keydown
+     Only runs when NO input is focused.
+     If mobileInput is focused (user clicked
+     terminal or is on mobile), its own
+     keydown/input handlers take over.
+  ───────────────────────────────────── */
+  document.addEventListener('keydown', (e) => {
+    const tag = document.activeElement.tagName;
+    // Skip if ANY input/textarea has focus — those have their own handlers
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+
+    if (e.key === 'Backspace') {
+      e.preventDefault();
+      currentCmd = currentCmd.slice(0, -1);
+    } else if (e.key === 'Enter') {
+      execCmd();
+    } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
+      currentCmd += e.key;
+    } else {
+      return;
+    }
+    render();
   });
 }
+
 
 
 /* ═══════════════════════════════════════
