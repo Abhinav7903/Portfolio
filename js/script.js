@@ -809,3 +809,39 @@ if (terminalText && terminalHistory && terminalBody) {
   });
 })();
 
+
+/* ═══════════════════════════════════════
+   COPY EMAIL TO CLIPBOARD
+═══════════════════════════════════════ */
+(function initCopyEmail() {
+  const copyBtn  = document.getElementById('copy-email-btn');
+  const copyIcon = document.getElementById('copy-email-icon');
+  if (!copyBtn || !copyIcon) return;
+
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText('abhinavashish@gmail.com');
+      copyIcon.className = 'fas fa-check';
+      copyBtn.classList.add('copied');
+      copyBtn.title = 'Copied!';
+    } catch {
+      // Fallback for browsers that block clipboard without HTTPS
+      const ta = document.createElement('textarea');
+      ta.value = 'abhinavashish@gmail.com';
+      ta.style.position = 'fixed';
+      ta.style.opacity  = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      copyIcon.className = 'fas fa-check';
+      copyBtn.classList.add('copied');
+    }
+
+    setTimeout(() => {
+      copyIcon.className = 'fas fa-copy';
+      copyBtn.classList.remove('copied');
+      copyBtn.title = 'Copy email';
+    }, 2000);
+  });
+})();

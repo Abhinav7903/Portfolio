@@ -2981,6 +2981,46 @@ textarea {
   gap: 10px;
 }
 
+/* Row wrapper: email link + copy button sit side-by-side */
+.ci-link-row {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.ci-link-row .ci-link {
+  flex: 1;
+}
+
+/* Copy-to-clipboard button */
+.copy-email-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  flex-shrink: 0;
+  border-radius: var(--r-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  color: var(--text-tertiary);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.25s var(--ease-smooth);
+}
+
+.copy-email-btn:hover {
+  background: var(--glow);
+  border-color: rgba(124, 111, 255, 0.3);
+  color: var(--accent);
+  transform: scale(1.07);
+}
+
+.copy-email-btn.copied {
+  background: rgba(0, 229, 192, 0.12);
+  border-color: rgba(0, 229, 192, 0.35);
+  color: var(--accent-2);
+}
+
 .ci-link {
   display: flex;
   align-items: center;

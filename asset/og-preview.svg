@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-family="'Inter', 'Segoe UI', sans-serif">
+  <defs>
+    <!-- Background -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09090f"/>
+      <stop offset="100%" stop-color="#0d0b1e"/>
+    </linearGradient>
+    <!-- Accent gradient -->
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c6fff"/>
+      <stop offset="100%" stop-color="#00e5c0"/>
+    </linearGradient>
+    <!-- Purple orb -->
+    <radialGradient id="orb1" cx="50%" cy="50%">
+      <stop offset="0%" stop-color="#7c6fff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#7c6fff" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Teal orb -->
+    <radialGradient id="orb2" cx="50%" cy="50%">
+      <stop offset="0%" stop-color="#00e5c0" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#00e5c0" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Card glass -->
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02"/>
+    </linearGradient>
+    <filter id="blur1">
+      <feGaussianBlur stdDeviation="80"/>
+    </filter>
+    <filter id="blur2">
+      <feGaussianBlur stdDeviation="60"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feFlood flood-color="#7c6fff" flood-opacity="0.5" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Ambient orbs -->
+  <ellipse cx="200" cy="180" rx="320" ry="280" fill="url(#orb1)" filter="url(#blur1)"/>
+  <ellipse cx="1050" cy="490" rx="260" ry="220" fill="url(#orb2)" filter="url(#blur2)"/>
+
+  <!-- Dot grid overlay (subtle) -->
+  <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+    <circle cx="1" cy="1" r="1" fill="#7c6fff" fill-opacity="0.08"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="1200" height="3" fill="url(#grad)"/>
+
+  <!-- Left content area -->
+  <!-- Eyebrow badge -->
+  <rect x="72" y="120" width="220" height="34" rx="17" fill="rgba(124,111,255,0.12)" stroke="rgba(124,111,255,0.3)" stroke-width="1"/>
+  <text x="132" y="142" fill="#7c6fff" font-size="13" font-weight="700" letter-spacing="1.5">⚡ SOFTWARE ENGINEER</text>
+
+  <!-- Name -->
+  <text x="72" y="220" fill="white" font-size="64" font-weight="800" letter-spacing="-1">Abhinav</text>
+  <text x="72" y="297" fill="url(#grad)" font-size="64" font-weight="800" letter-spacing="-1">Ashish.</text>
+
+  <!-- Tagline -->
+  <text x="72" y="355" fill="rgba(255,255,255,0.55)" font-size="20" font-weight="400" letter-spacing="0.3">Building scalable backend systems with purpose.</text>
+
+  <!-- Tech pills row -->
+  <!-- Go -->
+  <rect x="72" y="420" width="72" height="32" rx="16" fill="rgba(0,173,216,0.12)" stroke="rgba(0,173,216,0.25)" stroke-width="1"/>
+  <text x="108" y="441" fill="#00ADD8" font-size="13" font-weight="600" text-anchor="middle">Go</text>
+
+  <!-- PostgreSQL -->
+  <rect x="156" y="420" width="120" height="32" rx="16" fill="rgba(51,103,145,0.15)" stroke="rgba(51,103,145,0.3)" stroke-width="1"/>
+  <text x="216" y="441" fill="#4fa3d1" font-size="13" font-weight="600" text-anchor="middle">PostgreSQL</text>
+
+  <!-- Redis -->
+  <rect x="288" y="420" width="80" height="32" rx="16" fill="rgba(220,50,47,0.10)" stroke="rgba(220,50,47,0.2)" stroke-width="1"/>
+  <text x="328" y="441" fill="#e05050" font-size="13" font-weight="600" text-anchor="middle">Redis</text>
+
+  <!-- Docker -->
+  <rect x="380" y="420" width="88" height="32" rx="16" fill="rgba(0,150,220,0.10)" stroke="rgba(0,150,220,0.2)" stroke-width="1"/>
+  <text x="424" y="441" fill="#0096DC" font-size="13" font-weight="600" text-anchor="middle">Docker</text>
+
+  <!-- Distributed Systems -->
+  <rect x="72" y="464" width="190" height="32" rx="16" fill="rgba(124,111,255,0.10)" stroke="rgba(124,111,255,0.2)" stroke-width="1"/>
+  <text x="167" y="485" fill="#a598ff" font-size="13" font-weight="600" text-anchor="middle">Distributed Systems</text>
+
+  <!-- WebSockets -->
+  <rect x="274" y="464" width="112" height="32" rx="16" fill="rgba(0,229,192,0.10)" stroke="rgba(0,229,192,0.2)" stroke-width="1"/>
+  <text x="330" y="485" fill="#00e5c0" font-size="13" font-weight="600" text-anchor="middle">WebSockets</text>
+
+  <!-- Stats row -->
+  <rect x="72" y="516" width="130" height="70" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="137" y="548" fill="#7c6fff" font-size="26" font-weight="800" text-anchor="middle">20+</text>
+  <text x="137" y="569" fill="rgba(255,255,255,0.45)" font-size="11" text-anchor="middle">Projects</text>
+
+  <rect x="214" y="516" width="130" height="70" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="279" y="548" fill="#00e5c0" font-size="26" font-weight="800" text-anchor="middle">1+</text>
+  <text x="279" y="569" fill="rgba(255,255,255,0.45)" font-size="11" text-anchor="middle">Yrs Experience</text>
+
+  <rect x="356" y="516" width="130" height="70" rx="12" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="421" y="548" fill="#ff6b9d" font-size="26" font-weight="800" text-anchor="middle">10+</text>
+  <text x="421" y="569" fill="rgba(255,255,255,0.45)" font-size="11" text-anchor="middle">Technologies</text>
+
+  <!-- Divider -->
+  <line x1="660" y1="60" x2="660" y2="570" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+
+  <!-- RIGHT: Terminal card -->
+  <rect x="700" y="90" width="440" height="450" rx="16" fill="url(#card)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+
+  <!-- Terminal top bar -->
+  <rect x="700" y="90" width="440" height="44" rx="16" fill="rgba(255,255,255,0.04)"/>
+  <rect x="700" y="118" width="440" height="16" rx="0" fill="rgba(255,255,255,0.04)"/>
+  <!-- Close dots -->
+  <circle cx="727" cy="113" r="6" fill="#ff5f57"/>
+  <circle cx="749" cy="113" r="6" fill="#ffbd2e"/>
+  <circle cx="771" cy="113" r="6" fill="#28c840"/>
+  <!-- Title -->
+  <text x="920" y="118" fill="rgba(255,255,255,0.35)" font-size="12" font-family="'JetBrains Mono', monospace" text-anchor="middle">abhinav@portfolio ~</text>
+
+  <!-- Terminal content -->
+  <text x="724" y="165" fill="#7c6fff" font-size="13" font-family="monospace" font-weight="600">abhinav@portfolio:~$</text>
+  <text x="872" y="165" fill="rgba(255,255,255,0.8)" font-size="13" font-family="monospace"> whoami</text>
+
+  <text x="724" y="190" fill="#00e5c0" font-size="13" font-family="monospace">→ Abhinav Ashish — Software Engineer</text>
+
+  <text x="724" y="225" fill="#7c6fff" font-size="13" font-family="monospace" font-weight="600">abhinav@portfolio:~$</text>
+  <text x="872" y="225" fill="rgba(255,255,255,0.8)" font-size="13" font-family="monospace"> stack</text>
+
+  <text x="724" y="250" fill="#00e5c0" font-size="13" font-family="monospace">→ Go · PostgreSQL · Redis · Docker · Linux</text>
+
+  <text x="724" y="285" fill="#7c6fff" font-size="13" font-family="monospace" font-weight="600">abhinav@portfolio:~$</text>
+  <text x="872" y="285" fill="rgba(255,255,255,0.8)" font-size="13" font-family="monospace"> projects</text>
+
+  <text x="724" y="312" fill="#00e5c0" font-size="13" font-family="monospace">→ TermChat · Backend-For-Split</text>
+  <text x="724" y="332" fill="#00e5c0" font-size="13" font-family="monospace">   Bitcoin Decoder · Salon SaaS</text>
+
+  <text x="724" y="367" fill="#7c6fff" font-size="13" font-family="monospace" font-weight="600">abhinav@portfolio:~$</text>
+  <text x="872" y="367" fill="rgba(255,255,255,0.8)" font-size="13" font-family="monospace"> github</text>
+
+  <text x="724" y="392" fill="#00e5c0" font-size="13" font-family="monospace">→ github.com/Abhinav7903</text>
+
+  <!-- Cursor blink line -->
+  <text x="724" y="427" fill="#7c6fff" font-size="13" font-family="monospace" font-weight="600">abhinav@portfolio:~$</text>
+  <rect x="870" y="413" width="9" height="16" fill="#7c6fff" opacity="0.8" rx="1"/>
+
+  <!-- Glow behind terminal -->
+  <ellipse cx="920" cy="315" rx="180" ry="150" fill="rgba(124,111,255,0.06)" filter="url(#blur2)"/>
+
+  <!-- URL bar bottom -->
+  <text x="72" y="608" fill="rgba(255,255,255,0.2)" font-size="14" font-weight="400">abhinav7903.github.io/Portfolio</text>
+
+  <!-- Social handles bottom right -->
+  <text x="1128" y="608" fill="rgba(255,255,255,0.25)" font-size="14" text-anchor="end">@Abhinav7903 · @Abhinavashish14</text>
+</svg>

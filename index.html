@@ -1,27 +1,84 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Abhinav Ashish — Software Engineer specializing in Go, backend systems, and distributed architectures. Building high-performance applications.">
-  <meta name="keywords" content="Abhinav Ashish, Software Engineer, Go Developer, Backend Developer, Portfolio, Kolkata">
-  <meta name="author" content="Abhinav Ashish">
-  <meta name="google-site-verification" content="8UeFaUl7mRzi-aUD0n_1EQ5wi9N7yJLko4Zk4bfiosU">
-  <title>Abhinav Ashish — Software Engineer</title>
 
-  <link rel="icon" type="image/x-icon" href="asset/logo.svg">
+<!-- Basic -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Abhinav Ashish | Go Backend Developer & Software Engineer</title>
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<meta name="description"
+content="Abhinav Ashish is a Software Engineer specializing in Go, backend systems, distributed architectures, and scalable microservices. View projects and portfolio.">
 
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<meta name="author" content="Abhinav Ashish">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://abhinav7903.github.io/Portfolio/">
+
+<!-- Open Graph (LinkedIn / Facebook / Discord) -->
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Abhinav Ashish | Software Engineer">
+<meta property="og:description"
+content="Go Backend Developer building scalable systems and distributed architectures.">
+
+<meta property="og:url"
+content="https://abhinav7903.github.io/Portfolio/">
+
+<meta property="og:image"
+content="https://abhinav7903.github.io/Portfolio/asset/og-preview.png">
+
+<meta property="og:site_name"
+content="Abhinav Ashish Portfolio">
+
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter Card -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Abhinav Ashish | Software Engineer">
+<meta name="twitter:description"
+content="Go Backend Developer building scalable distributed systems.">
+<meta name="twitter:image"
+content="https://abhinav7903.github.io/Portfolio/asset/og-preview.png">
+
+<meta name="twitter:creator" content="@Abhinavashish14">
+
+<!-- Favicon -->
+
+<link rel="icon" href="/asset/favicon.png">
+
+<!-- Google Fonts -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Structured Data -->
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Person",
+ "name": "Abhinav Ashish",
+ "url": "https://abhinav7903.github.io/Portfolio/",
+ "jobTitle": "Software Engineer",
+ "image": "https://abhinav7903.github.io/Portfolio/asset/logo.svg",
+ "sameAs": [
+   "https://github.com/abhinav7903",
+   "https://linkedin.com/in/abhinav-ashish",
+   "https://twitter.com/Abhinavashish14"
+ ],
+ "knowsAbout": [
+   "Go",
+   "Backend Development",
+   "Distributed Systems",
+   "Microservices",
+   "System Design"
+ ]
+}
+</script>
 
 </head>
 <body>
@@ -503,14 +560,19 @@
 
 
             <div class="ci-links">
-              <a href="mailto:abhinavashish@gmail.com" class="ci-link" id="cta-email">
-                <div class="ci-link-icon"><i class="fas fa-envelope"></i></div>
-                <div class="ci-link-body">
-                  <span class="ci-link-label">Email</span>
-                  <span class="ci-link-val">abhinavashish@gmail.com</span>
-                </div>
-                <i class="fas fa-arrow-up-right-from-square ci-link-arrow"></i>
-              </a>
+              <div class="ci-link-row">
+                <a href="mailto:abhinavashish@gmail.com" class="ci-link" id="cta-email">
+                  <div class="ci-link-icon"><i class="fas fa-envelope"></i></div>
+                  <div class="ci-link-body">
+                    <span class="ci-link-label">Email</span>
+                    <span class="ci-link-val">abhinavashish@gmail.com</span>
+                  </div>
+                  <i class="fas fa-arrow-up-right-from-square ci-link-arrow"></i>
+                </a>
+                <button class="copy-email-btn" id="copy-email-btn" aria-label="Copy email address" title="Copy email">
+                  <i class="fas fa-copy" id="copy-email-icon"></i>
+                </button>
+              </div>
               <a href="https://www.linkedin.com/in/abhinav-ashish-8328bb1b5" target="_blank" class="ci-link" id="cta-linkedin">
                 <div class="ci-link-icon" style="background:rgba(0,119,181,0.12);color:#0077b5">
                   <i class="fab fa-linkedin-in"></i>
@@ -668,7 +730,7 @@
       <!-- ── Row 2: Bottom bar ── -->
       <div class="fv2-bottom">
         <p class="fv2-copy">
-          &copy; 2025 Abhinav Ashish.
+          © 2026 Abhinav Ashish.
         </p>
         <a href="asset/Abhinav Ashishv0.pdf" target="_blank" class="fv2-resume-btn">
           <i class="fas fa-file-arrow-down"></i> Resume
