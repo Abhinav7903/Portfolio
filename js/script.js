@@ -584,7 +584,9 @@ if (terminalText && terminalHistory && terminalBody) {
     stack:      'Go • PostgreSQL • Redis • Docker • Linux',
     projects:   'TermChat • Backend-For-Split • Bitcoin Decoder',
     github:     'github.com/Abhinav7903',
-    help:       'Commands: whoami  experience  stack  projects  github  clear',
+    linkedin:   'linkedin.com/in/abhinav-ashish-06b87821b',
+    mail:       'abhinavashish4@gmail.com',
+    help:       'Commands: whoami  experience  stack  projects  github  linkedin  mail  clear',
   };
 
   /* ── Shared: render current command & scroll ── */
