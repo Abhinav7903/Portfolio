@@ -86,12 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ═══ TYPING ═══ */
   const typedEl = $('#typed');
   const phrases = [
+    'code as clean as my quarters',
     'scalable backend systems',
-    'real-time chat apps',
-    'distributed architectures',
-    'blockchain network tools',
-    'high-performance APIs',
-    'go-powered services',
+    'architectures without a speck of dust',
+    'masterpieces in Go',
+    'systems that never hesitate',
   ];
 
   let pi = 0, ci = 0, deleting = false, delay = 80;
@@ -399,11 +398,11 @@ loadProjects();
   /* ── 1. Cycling typewriter placeholder on textarea ── */
   const cyclingEl = document.getElementById('placeholder-cycling');
   const cyclingTexts = [
-    'Tell me about your project...',
-    "What are you building?",
-    "Let's create something amazing...",
-    'Have a collaboration idea?',
-    'Looking for a backend engineer?',
+    'Tch. Tell me about your project...',
+    "Is your codebase a mess? Let's clean it.",
+    "Need an elite Scout for your backend?",
+    "Bring me your Colossal problems...",
+    "Choose: build it right, or don't build it.",
   ];
 
   if (cyclingEl) {
@@ -579,11 +578,11 @@ if (terminalText && terminalHistory && terminalBody) {
   let prevInputVal = '';
 
   const responses = {
-    whoami:     'Abhinav Ashish — Software Engineer',
-    experience: '1+ year building backend systems in Go',
-    stack:      'Go • PostgreSQL • Redis • Docker • Linux',
-    projects:   'TermChat • Backend-For-Split • Bitcoin Decoder',
-    github:     'github.com/Abhinav7903',
+    whoami:     "Abhinav Ashish — Elite Backend Architect",
+    experience: 'Cleaning up tech debt faster than you can blink',
+    stack:      'Go • PostgreSQL • Redis • Earl Grey tea',
+    projects:   'TermChat • Backend-For-Split • Systems as clean as my quarters',
+    github:     'github.com/Abhinav7903 (Witness precision)',
     linkedin:   'linkedin.com/in/abhinav-ashish-06b87821b',
     mail:       'abhinavashish4@gmail.com',
     help:       'Commands: whoami  experience  stack  projects  github  linkedin  mail  clear',
