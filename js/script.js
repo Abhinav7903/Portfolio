@@ -598,7 +598,7 @@ if (terminalText && terminalHistory && terminalBody) {
   const execCmd = () => {
     const cmdLine = document.createElement('div');
     cmdLine.className = 'terminal-line';
-    cmdLine.innerHTML = `<span class="prompt">abhinav@portfolio:~$</span> ${currentCmd}`;
+    cmdLine.innerHTML = `<span class="prompt">master@backend:~$</span> ${currentCmd}`;
     terminalHistory.appendChild(cmdLine);
 
     if (currentCmd === 'clear') {
