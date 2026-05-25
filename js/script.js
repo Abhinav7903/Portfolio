@@ -37,6 +37,36 @@ document.addEventListener('DOMContentLoaded', () => {
   on(tBtn, 'click', () => applyTheme(html.dataset.theme === 'dark' ? 'light' : 'dark'));
 
 
+  /* ═══ MODE TOGGLE (Classic → Cool) ═══ */
+  const modeToggle = $('#mode-toggle');
+  const modeOverlay = $('#mode-overlay');
+  const modeBar = $('#mode-overlay-bar');
+  let modeToggling = false;
+
+  on(modeToggle, 'click', (e) => {
+    e.preventDefault();
+    if (modeToggling) return;
+    modeToggling = true;
+
+    modeToggle.classList.add('toggling');
+
+    // Show overlay
+    modeOverlay.classList.add('active');
+
+    // Re-trigger the bar animation
+    if (modeBar) {
+      modeBar.style.animation = 'none';
+      void modeBar.offsetWidth;
+      modeBar.style.animation = '';
+    }
+
+    // Navigate after animation completes
+    setTimeout(() => {
+      window.location.href = modeToggle.href;
+    }, 1200);
+  });
+
+
   /* ═══ MOBILE NAV ═══ */
   const ham     = $('#hamburger');
   const navMenu = $('#nav-menu');
