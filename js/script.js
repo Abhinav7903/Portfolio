@@ -178,21 +178,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ═══ GITHUB PROJECTS ═══ */
+  const grid = $('#proj-grid');
+  const loading = $('#proj-loading');
 
-/* ═══ GITHUB PROJECTS ═══ */
+  const prevBtn = $('#prevPage');
+  const nextBtn = $('#nextPage');
+  const pageInfo = $('#pageInfo');
 
-const grid = $('#proj-grid');
-const loading = $('#proj-loading');
+  let reposData = [];
+  let filteredRepos = [];
+  let currentPage = 1;
 
-const prevBtn = $('#prevPage');
-const nextBtn = $('#nextPage');
-const pageInfo = $('#pageInfo');
+  const perPage = 6;
 
-let reposData = [];
-let filteredRepos = [];
-let currentPage = 1;
-
-const perPage = 6;
+  const FALLBACK_REPOS = [
+    {
+      name: "TermChat",
+      html_url: "https://github.com/Abhinav7903/TermChat",
+      homepage: "",
+      language: "Go",
+      description: "Encrypted terminal chat application built with Go, Telnet, PostgreSQL, Redis and Tailscale.",
+      stargazers_count: 5
+    },
+    {
+      name: "Backend-For-Split",
+      html_url: "https://github.com/Abhinav7903/Backend-For-Split",
+      homepage: "",
+      language: "Go",
+      description: "Scalable expense splitting REST API engineered with Go, PostgreSQL, Redis, and JWT authentication.",
+      stargazers_count: 3
+    },
+    {
+      name: "Pcap-reader-for-bitcoin",
+      html_url: "https://github.com/Abhinav7903/Pcap-reader-for-bitcoin",
+      homepage: "",
+      language: "Go",
+      description: "Bitcoin network protocol packet decoder written in Go to parse and inspect blockchain P2P traffic.",
+      stargazers_count: 2
+    },
+    {
+      name: "ChatApp",
+      html_url: "https://github.com/Abhinav7903/ChatApp",
+      homepage: "https://abhinav7903.github.io/ChatApp/",
+      language: "JavaScript",
+      description: "Real-time chat web application built with React and Firebase.",
+      stargazers_count: 2
+    },
+    {
+      name: "VideoChat",
+      html_url: "https://github.com/Abhinav7903/VideoChat",
+      homepage: "https://abhinav7903.github.io/VideoChat/",
+      language: "JavaScript",
+      description: "Real-time peer-to-peer video chat web application using WebRTC and JavaScript.",
+      stargazers_count: 2
+    },
+    {
+      name: "WeatherApp",
+      html_url: "https://github.com/Abhinav7903/WeatherApp",
+      homepage: "https://abhinav7903.github.io/WeatherApp/",
+      language: "JavaScript",
+      description: "Weather web application integrating OpenWeather API with responsive modern UI.",
+      stargazers_count: 1
+    }
+  ];
 
 
 /* ---------- Language Color ---------- */
@@ -222,12 +270,12 @@ function makeCard(repo){
 
       <div class="pc-acts">
 
-        <a href="${repo.html_url}" target="_blank" class="pc-act">
+        <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="pc-act" aria-label="GitHub Repository">
           <i class="fab fa-github"></i>
         </a>
 
         ${repo.homepage ? `
-        <a href="${repo.homepage}" target="_blank" class="pc-act">
+        <a href="${repo.homepage}" target="_blank" rel="noopener noreferrer" class="pc-act" aria-label="Live Demo">
           <i class="fas fa-arrow-up-right-from-square"></i>
         </a>` : ""}
 
@@ -365,15 +413,41 @@ nextBtn.onclick = () => {
 
 /* ---------- Load GitHub Repos ---------- */
 
-async function loadProjects(){
+const CACHE_KEY = 'pf_gh_repos';
+const CACHE_TTL = 3600000; // 1 hour
 
-  try{
+function applyRepos(repos) {
+  reposData = repos;
+  filteredRepos = repos;
+  if (loading) loading.remove();
+  renderProjects();
+}
 
+async function loadProjects() {
+  // 1. Try local cache
+  try {
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (cached) {
+      const { timestamp, data } = JSON.parse(cached);
+      if (Date.now() - timestamp < CACHE_TTL && Array.isArray(data) && data.length) {
+        applyRepos(data);
+        return;
+      }
+    }
+  } catch (e) {
+    // Ignore cache parsing error
+  }
+
+  // 2. Fetch fresh from GitHub API
+  try {
     const res = await fetch(
       `https://api.github.com/users/${GITHUB_USER}/repos?per_page=100`
     );
 
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
     let repos = await res.json();
+    if (!Array.isArray(repos)) throw new Error("Invalid response format");
 
     repos = repos.filter(r =>
       !r.fork &&
@@ -384,38 +458,30 @@ async function loadProjects(){
       new Date(b.updated_at) - new Date(a.updated_at)
     );
 
-    reposData = repos;
-    filteredRepos = repos;
-
-    if(loading){
-      loading.remove();
+    if (repos.length > 0) {
+      try {
+        localStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: Date.now(), data: repos }));
+      } catch (e) {}
+      applyRepos(repos);
+      return;
     }
-
-    renderProjects();
-
+  } catch(err) {
+    console.warn("GitHub API error, using fallback/cached projects:", err);
   }
 
-  catch(err){
-
-    console.warn("GitHub API error:",err);
-
-    if(loading){
-
-      loading.innerHTML = `
-        <p style="color:var(--text-tertiary)">
-          Could not load GitHub repos.
-          <br>
-          <a href="https://github.com/${GITHUB_USER}" target="_blank"
-             style="color:var(--accent)">
-             View on GitHub →
-          </a>
-        </p>
-      `;
-
+  // 3. Fallback: use stale cache or hardcoded top projects
+  try {
+    const stale = localStorage.getItem(CACHE_KEY);
+    if (stale) {
+      const { data } = JSON.parse(stale);
+      if (Array.isArray(data) && data.length) {
+        applyRepos(data);
+        return;
+      }
     }
+  } catch (e) {}
 
-  }
-
+  applyRepos(FALLBACK_REPOS);
 }
 
 loadProjects();
@@ -608,12 +674,12 @@ if (terminalText && terminalHistory && terminalBody) {
   let prevInputVal = '';
 
   const responses = {
-    whoami:     "Abhinav Ashish — Elite Backend Architect",
-    experience: 'Cleaning up tech debt faster than you can blink',
+    whoami:     "Abhinav Ashish — Tech Lead & Backend Architect",
+    experience: 'Tech Lead @ Hornet Decentratech • Cleaning up tech debt faster than you can blink',
     stack:      'Go • PostgreSQL • Redis • Earl Grey tea',
     projects:   'TermChat • Backend-For-Split • Systems as clean as my quarters',
     github:     'github.com/Abhinav7903 (Witness precision)',
-    linkedin:   'linkedin.com/in/abhinav-ashish-06b87821b',
+    linkedin:   'linkedin.com/in/abhinav-ashish-8328bb1b5',
     mail:       'abhinavashish4@gmail.com',
     help:       'Commands: whoami  experience  stack  projects  github  linkedin  mail  clear',
   };
@@ -849,14 +915,14 @@ if (terminalText && terminalHistory && terminalBody) {
 
   copyBtn.addEventListener('click', async () => {
     try {
-      await navigator.clipboard.writeText('abhinavashish@gmail.com');
+      await navigator.clipboard.writeText('abhinavashish4@gmail.com');
       copyIcon.className = 'fas fa-check';
       copyBtn.classList.add('copied');
       copyBtn.title = 'Copied!';
     } catch {
       // Fallback for browsers that block clipboard without HTTPS
       const ta = document.createElement('textarea');
-      ta.value = 'abhinavashish@gmail.com';
+      ta.value = 'abhinavashish4@gmail.com';
       ta.style.position = 'fixed';
       ta.style.opacity  = '0';
       document.body.appendChild(ta);
